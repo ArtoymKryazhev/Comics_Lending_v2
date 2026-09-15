@@ -20,6 +20,18 @@
   --color-featured-dot: #5f5f5f;
   --color-featured-dot-active: #ffffff;
 
+  /* Subscribe (Frame 55:70) */
+  --color-subscribe-bg: #f7f7f7;
+  --color-subscribe-border: #ebe8e8;
+  --color-subscribe-price-from: #304d6d;
+  --color-subscribe-price-to: #1e212b;
+  --color-subscribe-cta: #2c2c2c;
+  --color-subscribe-cta-muted: #939393;
+
+  /* Footer (Frame 38:17) */
+  --color-footer-bg: #f6f6f6;
+  --color-footer-border: #fbfbfb;
+
   /* Артборд и контентная область */
   --page-width: 1920;
   --page-width-mobile: 440;

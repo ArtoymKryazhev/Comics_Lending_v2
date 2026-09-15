@@ -12,13 +12,14 @@ alwaysApply: false
 - Размеры блоков в CSS — в **rem** (1rem = 1px макета при эталонной ширине артборда).
 - Обёртка `.page.page-index` + `css/layout.css`; Desktop **без** вертикального scroll; mobile — scroll разрешён.
 
-## Adaptive (EXAMPLE JS)
-- `js/design-viewport.js`: выбор layout, `--design-w`, resize/orientationchange.
-- **Фактически:** `innerWidth >= 1024` → desktop, иначе mobile.
-- Scale по ширине: desktop `min(1px, 100vw/1920)`, mobile `100vw/440`.
+## Adaptive
+- `js/design-viewport.js`: layout, `--design-w`, `--fit-fs`, resize/orientationchange.
+- **Desktop** при `width ≥ 1200` **и** `height ≥ 600`; иначе **mobile**.
+- Margin-first: scale 1, пока до контента 1083 ≥ 20px по бокам и высота ≥ 1080; дальше пропорциональный scale, потолок 4K.
+- Mobile: `100vw/440`.
 - Gate: ширина &lt;320px → `.viewport-unsupported`.
 - Stubs без layout-обёртки.
-- `design-viewport.js` — пример; менять только с одобрения.
+- Менять adaptive только с одобрения.
 
 ## Ассеты
 - Экспортировать из Figma MCP, класть в `assets/index/`.

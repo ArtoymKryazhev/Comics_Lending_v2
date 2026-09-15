@@ -8,7 +8,7 @@ html[data-layout="desktop"] .page-index::before {
 }
 
 html[data-layout="desktop"] .header {
-  position: fixed;
+  position: absolute;
   top: 22rem;
   left: 0;
   right: 0;
@@ -97,7 +97,7 @@ html[data-layout="mobile"] .page-index::before {
 }
 
 html[data-layout="mobile"] .header {
-  position: fixed;
+  position: absolute;
   top: 22rem;
   left: 0;
   right: 0;
@@ -351,13 +351,6 @@ html[data-layout="desktop"] .brand__slider-knob img {
   pointer-events: none;
 }
 
-/* Mobile: блок только Desktop — скрываем до появления mobile-макета */
-html[data-layout="mobile"] .brand,
-html[data-layout="mobile"] .featured,
-html[data-layout="mobile"] .hero-row {
-  display: none;
-}
-
 /* Featured carousel — desktop (Figma 1:29 + 41:131/141/151)
    Layered Mask Shift: рамка + dots статичны; copy/media dual-slot */
 
@@ -580,4 +573,241 @@ html[data-layout="desktop"] .featured__dot.is-active::after {
 html[data-layout="desktop"] .featured__dot:focus-visible {
   outline: 2rem solid #ffffff;
   outline-offset: 2rem;
+}
+
+/* Subscribe — desktop (Frame 55:70)
+   hero ends 661; block top 692 → margin 31 */
+
+html[data-layout="desktop"] .subscribe {
+  width: 1083rem;
+  margin: 31rem auto 0;
+}
+
+html[data-layout="desktop"] .subscribe__card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 1083rem;
+  height: 217rem;
+  padding: 20rem 52rem 21rem 36rem;
+  border: 1rem solid var(--color-subscribe-border);
+  border-radius: 35rem;
+  background: var(--color-subscribe-bg);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+}
+
+html[data-layout="desktop"] .subscribe__left {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 410rem;
+}
+
+html[data-layout="desktop"] .subscribe__title {
+  margin: 16rem 0 0;
+  font-family: var(--font-family-base);
+  font-size: 32rem;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+html[data-layout="desktop"] .subscribe__features {
+  display: flex;
+  flex-direction: column;
+  gap: 21rem;
+  margin: 22rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+html[data-layout="desktop"] .subscribe__feature {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12rem;
+}
+
+html[data-layout="desktop"] .subscribe__feature-icon {
+  flex-shrink: 0;
+  width: 36rem;
+  height: 36rem;
+}
+
+html[data-layout="desktop"] .subscribe__feature-text {
+  margin: 0;
+  max-width: 290rem;
+  font-family: var(--font-family-base);
+  font-size: 14rem;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-text);
+}
+
+html[data-layout="desktop"] .subscribe__right {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 8rem;
+  width: 466rem;
+  margin-top: 0;
+}
+
+html[data-layout="desktop"] .subscribe__price {
+  box-sizing: border-box;
+  width: 466rem;
+  height: 106rem;
+  padding: 22rem 22rem 0;
+  border-radius: 25rem;
+  background: linear-gradient(
+    90deg,
+    var(--color-subscribe-price-from) 0%,
+    var(--color-subscribe-price-to) 87.5%
+  );
+  box-shadow: 0 4rem 4rem rgba(0, 0, 0, 0.05);
+}
+
+html[data-layout="desktop"] .subscribe__price-value {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 32rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+html[data-layout="desktop"] .subscribe__price-note {
+  margin: 6rem 0 0;
+  font-family: var(--font-family-base);
+  font-size: 14rem;
+  font-weight: 400;
+  line-height: normal;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+}
+
+html[data-layout="desktop"] .subscribe__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 466rem;
+  height: 62rem;
+  border-radius: 20rem;
+  background: var(--color-subscribe-cta);
+  box-shadow: 0 4rem 4rem rgba(0, 0, 0, 0.05);
+  font-family: var(--font-family-base);
+  font-size: 18rem;
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+html[data-layout="desktop"] .subscribe__cta-main {
+  color: #ffffff;
+}
+
+html[data-layout="desktop"] .subscribe__cta-free {
+  margin-left: 0.3em;
+  color: var(--color-subscribe-cta-muted);
+}
+
+/* Footer — desktop (Frame 38:17)
+   subscribe ends 692+217=909; footer top 949 → margin 40 */
+
+html[data-layout="desktop"] .footer {
+  width: 1083rem;
+  margin: 40rem auto 0;
+}
+
+html[data-layout="desktop"] .footer__card {
+  position: relative;
+  box-sizing: border-box;
+  width: 1083rem;
+  height: 95rem;
+  border: 1rem solid var(--color-footer-border);
+  border-radius: 25rem;
+  background: var(--color-footer-bg);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+}
+
+html[data-layout="desktop"] .footer__company {
+  position: absolute;
+  left: 42rem;
+  top: 22rem;
+}
+
+html[data-layout="desktop"] .footer__company-name {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 22rem;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+html[data-layout="desktop"] .footer__company-meta {
+  margin: 4rem 0 0;
+  font-family: var(--font-family-base);
+  font-size: 16rem;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+html[data-layout="desktop"] .footer__legal {
+  position: absolute;
+  left: 459rem;
+  top: 29rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+html[data-layout="desktop"] .footer__legal-link {
+  font-family: var(--font-family-base);
+  font-size: 16rem;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+html[data-layout="desktop"] .footer__rustore {
+  position: absolute;
+  left: 989rem;
+  top: 22rem;
+  display: block;
+  width: 52rem;
+  height: 52rem;
+  overflow: hidden;
+  border-radius: 30rem;
+  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+html[data-layout="desktop"] .footer__rustore img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Mobile: блоки только Desktop — скрываем до появления mobile-макета */
+html[data-layout="mobile"] .brand,
+html[data-layout="mobile"] .featured,
+html[data-layout="mobile"] .hero-row,
+html[data-layout="mobile"] .subscribe,
+html[data-layout="mobile"] .footer {
+  display: none;
 }

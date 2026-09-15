@@ -6,11 +6,10 @@
 HTML + CSS + vanilla JS.
 
 ## Артборды
-- Desktop: **1920px** ширина (обзорный фрейм `1:2` — 1920×1080; высота страницы — по контенту)
-- Mobile: **440px** ширина (временно, как в эталоне) — `html[data-layout="mobile"]`
-- Mobile node-id / точные размеры: **TODO** (жду артборд)
+- Desktop: **1920×1080** (обзорный фрейм `1:2`)
+- Mobile: **440px** ширина (временно) — `html[data-layout="mobile"]`
+- Mobile node-id / точные размеры: **TODO**
 - Контентная ширина: desktop **1083px**, mobile **396px** (ориентир)
-- Страница **скроллится** по вертикали
 
 ## Figma
 - fileKey: `jElL6muhfPPhZSn3f5mi2C`
@@ -24,16 +23,18 @@ HTML + CSS + vanilla JS.
 3. **Mobile-макеты** — отдельные фреймы, когда появятся; до этого mobile layout = тот же состав, узкая колонка
 
 ## Scroll
-- **Desktop:** вертикальный scroll **запрещён** (фиксированная высота артборда)
+- **Desktop:** вертикальный scroll **запрещён** (фиксированная высота артборда 1080)
 - **Mobile layout:** scroll разрешён
 
-## Adaptive (пример)
+## Adaptive
 - `js/design-viewport.js` + `css/layout.css`
-- **Фактическое поведение кода:** desktop при `innerWidth >= 1024`, иначе mobile; gate `<320px`
-- Scale по ширине (rem); page scroll
-- Stubs без layout-обёртки
+- **Desktop** при `width ≥ 1200` **и** `height ≥ 600`; иначе **mobile**
+- **Margin-first:** scale = 1, пока до контента (1083) по бокам ≥ **20px** и высота ≥ 1080 (поля артборда просто обрезаются)
+- Дальше / при росте экрана: пропорциональный scale от контента + 20px, потолок **4K** (×2)
+- Mobile scale: `100vw / 440`; gate `<320px`
+- Страница центрируется в viewport; stubs без layout-обёртки
 
-> **EXAMPLE:** код в `css/layout.css` и `js/design-viewport.js` скопирован из эталона Kutukov как рабочий пример. Менять / переписывать — **только с одобрения** пользователя.
+> Adaptive обновлён под Fit / margin-first (одобрение пользователя). Крупные переписывания — с одобрения.
 
 ## Header
 Механика fixed + blur (Chrome) — см. [docs/header-behavior.md](docs/header-behavior.md). Визуал — из фрейма Comics.
@@ -46,7 +47,7 @@ HTML + CSS + vanilla JS.
 
 ## Структура
 - `css/` — reset, tokens, layout (пример), стили страницы
-- `js/design-viewport.js` — layout + scale по ширине (**пример**)
+- `js/design-viewport.js` — layout + fit-scale
 - `assets/index/` — экспорты из Figma
 - `examples/page-skeleton.html` — эталон каркаса
 - `docs/plans/` — сохранённые планы

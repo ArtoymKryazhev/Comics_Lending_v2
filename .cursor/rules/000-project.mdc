@@ -23,48 +23,48 @@ Figma fileKey: `jElL6muhfPPhZSn3f5mi2C`
 | --- | --- | --- |
 | index | 1920×1080 (обзор `1:2`; высота — ориентир) | TODO (ширина временно 440) |
 
-Высота артборда — **ориентир макета**; на сайте страница **скроллится** по естественной высоте контента.
-
-Контентная ширина: desktop **1083px** (центр), mobile **396px** (поля ~22px) — ориентир из эталона / обзора.
+Высота артборда desktop — **1080** (fit в viewport). Контентная ширина: desktop **1083px** (центр), mobile **396px** (поля ~22px) — ориентир.
 
 ## Фазы
 1. **Desktop** — пиксель-в-пиксель по Figma, блок за блоком
-2. **Adaptive** — пропорциональный rem-scale (разрешён); не breakpoints для смены композиции
+2. **Adaptive** — Fit rem-scale (разрешён); порог mobile не через composition breakpoints
 3. **Mobile-макеты** — когда появятся отдельные фреймы
 
 ## Scroll
 - Desktop: **overflow hidden** (скролл запрещён)
 - Mobile layout: scroll разрешён
 
-Ширина артборда на `<html>`: `data-artboard-w`, `data-artboard-w-mobile`. Высота (`data-artboard-h*`) — справочно.
+Ширина артборда на `<html>`: `data-artboard-w`, `data-artboard-w-mobile`. Высота (`data-artboard-h*`) — для fit-scale.
 
-## Adaptive (layout) — EXAMPLE
+## Adaptive (layout)
 - Файлы: `js/design-viewport.js` + `css/layout.css`
-- **Фактически в коде:** `innerWidth >= 1024` → desktop, иначе mobile
-- Scale по ширине через `font-size` на `html` (1rem = 1px макета при эталонной ширине)
-- Desktop: `font-size: min(1px, 100vw / 1920)`; Mobile: `font-size: calc(100vw / 440)`
-- Desktop: scroll **запрещён**; mobile: scroll разрешён
+- **Desktop** при `width ≥ 1200` **и** `height ≥ 600`; иначе **mobile**
+- Margin-first: `scale = 1`, пока до контента 1083 по бокам ≥ 20px и `vh ≥ 1080`
+- Иначе / при увеличении: scale от `(vw-40)/1083` и высоты, потолок 4K (×2)
+- Mobile: `font-size: calc(100vw / 440)`
+- Desktop: scroll **запрещён**; страница центрируется; mobile: scroll разрешён
 - Gate: ширина &lt;320px → заглушка
 - Stubs без layout-обёртки
 
-> `design-viewport.js` — **пример из Kutukov** (менять с одобрения). `layout.css` может правиться под scroll/scale по задаче. См. `docs/header-behavior.md`.
+> Менять adaptive — с одобрения. См. `docs/header-behavior.md`.
 
 ## Вёрстка по компонентам
 Не верстать страницу целиком. Порядок — см. `current_status.md`:
-- Header → Brand/intro → Featured comic (серая карточка) → Subscription → Footer
+- Header → Brand/intro → Featured comic → Subscription → Footer
 
 На каждом шаге: `get_design_context` + скриншот node-id → ассеты → Desktop (+ rem-scale).
 
 ## Header
-Механика (fixed, spacer, pointer-events, backdrop-filter) — как в эталоне Kutukov; зафиксировано в `docs/header-behavior.md`. Визуал — из фрейма Comics.
+Механика (absolute внутри `.page` + spacer, pointer-events, backdrop-filter) — `docs/header-behavior.md`. Визуал — из фрейма Comics.
 
 ## Запреты
 - Не вводить фреймворки, препроцессоры, сборщики без явного запроса
 - Не создавать новые папки верхнего уровня без согласования
 - Не добавлять бизнес-логику: кнопки/ссылки — визуал; внешние URL → `pages/stubs/`
 - Не делать big-bang рефакторинг — только файлы текущей задачи
-- Не включать scroll на Desktop без запроса; не letterbox-fit всей страницы
-- Не переписывать `design-viewport.js` (EXAMPLE) без одобрения
+- Не включать scroll на Desktop без запроса
+- Не ломать Fit-scale / центрирование без одобрения
+- Не переписывать `design-viewport.js` без одобрения
 
 ## Процесс
 - Перед изменениями перечисли файлы и подход; код — после подтверждения, если задача неоднозначна

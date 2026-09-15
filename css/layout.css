@@ -1,13 +1,12 @@
 /*
- * EXAMPLE — база из Kutukov; правки по задаче Header:
- * — Desktop: scroll запрещён (отмашка пользователя)
- * — Mobile: scroll разрешён
- * Переписывать целиком — только с одобрения.
+ * Adaptive layout — margin-first fit + mobile breakpoint.
+ * Desktop: scale 1 пока поля до контента ≥20px; иначе / при росте — пропорциональный scale, cap 4K.
+ * Mobile: scale 100vw/440; порог w<1200 || h<600.
  */
 html {
   overflow-x: clip;
   /* fallback до design-viewport.js */
-  font-size: min(1px, calc(100vw / 1920));
+  font-size: calc(100vw / 1920);
 }
 
 html,
@@ -17,56 +16,48 @@ body {
 }
 
 .page {
+  position: relative;
   width: calc(var(--design-w, 1920) * 1rem);
   margin: 0 auto;
   min-height: 100%;
 }
 
-/* Desktop: пропорциональный scale по ширине (1rem = 1px макета при 1920) */
+/* Desktop: fit-scale из JS (--fit-fs); центрирование в viewport */
 html[data-layout="desktop"] {
-  font-size: min(1px, calc(100vw / var(--design-w, 1920)));
   height: 100%;
   overflow: hidden;
+  font-size: var(--fit-fs, calc(100vw / var(--design-w, 1920)));
 }
 
 html[data-layout="desktop"] body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   overflow: hidden;
 }
 
 html[data-layout="desktop"] .page {
+  flex-shrink: 0;
+  width: calc(var(--design-w, 1920) * 1rem);
   height: calc(var(--page-height-main-desktop, 1080) * 1rem);
-  max-height: 100%;
+  margin: 0;
   overflow: hidden;
 }
 
-/* Mobile + tablet: один scale; page scroll разрешён */
+/* Mobile: scale по ширине; page scroll разрешён */
 html[data-layout="mobile"][data-viewport="ok"] {
   font-size: calc(100vw / var(--design-w, 440));
 }
 
 html[data-layout="mobile"][data-viewport="ok"] body {
+  display: block;
   overflow-y: auto;
 }
 
 /* Заглушка: обычный px, без rem-scale */
 html[data-layout="mobile"][data-viewport="unsupported"] {
   font-size: 16px;
-}
-
-/* До JS — заглушка только если viewport явно unsupported */
-@media (max-width: 1023px) {
-  html[data-viewport="unsupported"] .page {
-    display: none !important;
-  }
-
-  html[data-viewport="unsupported"] .viewport-unsupported {
-    display: flex !important;
-  }
-
-  html[data-viewport="unsupported"] .viewport-unsupported[hidden] {
-    display: flex !important;
-  }
 }
 
 .viewport-unsupported {
