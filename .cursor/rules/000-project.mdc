@@ -1,0 +1,72 @@
+---
+alwaysApply: true
+---
+# Comics Landing (Крумб) — базовые правила
+
+Статическая вёрстка одностраничного лендинга «Крумб» по Figma. Источник истины — код и `.cursor/rules/`. При расхождении верь коду.
+
+## Стек
+- Frontend: HTML + CSS + vanilla JS
+- Без React/Vue/Svelte, без Tailwind/Bootstrap и других UI-фреймворков
+- Без бэкенда, сборки и package-менеджера
+
+## Страницы
+Одна страница в `pages/`:
+- `pages/index.html` — лендинг (обзор Desktop [`1:2`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=1-2))
+
+Figma fileKey: `jElL6muhfPPhZSn3f5mi2C`
+
+Вёрстка **по отдельным фреймам-блокам** от пользователя. Для серой карточки возможны доп. фреймы — ждать node-id, не угадывать.
+
+## Артборды
+| Страница | Desktop | Mobile |
+| --- | --- | --- |
+| index | 1920×1080 (обзор `1:2`; высота — ориентир) | TODO (ширина временно 440) |
+
+Высота артборда — **ориентир макета**; на сайте страница **скроллится** по естественной высоте контента.
+
+Контентная ширина: desktop **1083px** (центр), mobile **396px** (поля ~22px) — ориентир из эталона / обзора.
+
+## Фазы
+1. **Desktop** — пиксель-в-пиксель по Figma, блок за блоком
+2. **Adaptive** — пропорциональный rem-scale (разрешён); не breakpoints для смены композиции
+3. **Mobile-макеты** — когда появятся отдельные фреймы
+
+## Scroll
+- Desktop: **overflow hidden** (скролл запрещён)
+- Mobile layout: scroll разрешён
+
+Ширина артборда на `<html>`: `data-artboard-w`, `data-artboard-w-mobile`. Высота (`data-artboard-h*`) — справочно.
+
+## Adaptive (layout) — EXAMPLE
+- Файлы: `js/design-viewport.js` + `css/layout.css`
+- **Фактически в коде:** `innerWidth >= 1024` → desktop, иначе mobile
+- Scale по ширине через `font-size` на `html` (1rem = 1px макета при эталонной ширине)
+- Desktop: `font-size: min(1px, 100vw / 1920)`; Mobile: `font-size: calc(100vw / 440)`
+- Desktop: scroll **запрещён**; mobile: scroll разрешён
+- Gate: ширина &lt;320px → заглушка
+- Stubs без layout-обёртки
+
+> `design-viewport.js` — **пример из Kutukov** (менять с одобрения). `layout.css` может правиться под scroll/scale по задаче. См. `docs/header-behavior.md`.
+
+## Вёрстка по компонентам
+Не верстать страницу целиком. Порядок — см. `current_status.md`:
+- Header → Brand/intro → Featured comic (серая карточка) → Subscription → Footer
+
+На каждом шаге: `get_design_context` + скриншот node-id → ассеты → Desktop (+ rem-scale).
+
+## Header
+Механика (fixed, spacer, pointer-events, backdrop-filter) — как в эталоне Kutukov; зафиксировано в `docs/header-behavior.md`. Визуал — из фрейма Comics.
+
+## Запреты
+- Не вводить фреймворки, препроцессоры, сборщики без явного запроса
+- Не создавать новые папки верхнего уровня без согласования
+- Не добавлять бизнес-логику: кнопки/ссылки — визуал; внешние URL → `pages/stubs/`
+- Не делать big-bang рефакторинг — только файлы текущей задачи
+- Не включать scroll на Desktop без запроса; не letterbox-fit всей страницы
+- Не переписывать `design-viewport.js` (EXAMPLE) без одобрения
+
+## Процесс
+- Перед изменениями перечисли файлы и подход; код — после подтверждения, если задача неоднозначна
+- Перед вёрсткой блока: `get_design_context` + скриншот по node-id из Figma
+- Ассеты качать из Figma MCP в `assets/index/`; не коммитить временные MCP URL

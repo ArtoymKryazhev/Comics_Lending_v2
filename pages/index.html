@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html
+  lang="ru"
+  data-artboard-w="1920"
+  data-artboard-h="1080"
+  data-artboard-w-mobile="440"
+  data-artboard-h-mobile="0"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Крумб</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <div class="page page-index">
+      <header class="header">
+        <div class="header__bar">
+          <span class="header__logo" aria-hidden="true">
+            <img src="../assets/index/icon-logo.png" alt="" width="38" height="38" />
+          </span>
+          <div class="header__actions">
+            <span class="header__rustore" aria-hidden="true">
+              <img
+                src="../assets/index/button-rustore.png"
+                alt=""
+                width="126"
+                height="38"
+              />
+            </span>
+            <span class="header__menu" aria-hidden="true">
+              <img
+                src="../assets/index/icon-burger-menu.svg"
+                alt=""
+                width="21"
+                height="8"
+              />
+            </span>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="hero-row">
+          <section class="brand" aria-label="Крумб">
+            <div class="brand__card">
+              <h1 class="brand__title">Крумб</h1>
+              <p class="brand__subtitle">
+                Онлайн платформа для чтения авторских исторических комиксов
+              </p>
+              <div class="brand__art" aria-hidden="true">
+                <img
+                  src="../assets/index/img-left-div.png"
+                  alt=""
+                  width="417"
+                  height="364"
+                />
+              </div>
+              <div class="brand__slider" data-slider>
+                <div class="brand__slider-label-wrap" data-slider-mask>
+                  <p class="brand__slider-label">7 дней бесплатно</p>
+                </div>
+                <button
+                  class="brand__slider-knob"
+                  type="button"
+                  data-slider-knob
+                  aria-label="Проведите, чтобы продолжить"
+                >
+                  <img
+                    src="../assets/index/icon-arrow-slider.svg"
+                    alt=""
+                    width="66"
+                    height="66"
+                  />
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="featured"
+            aria-label="Комиксы"
+            data-featured-carousel
+          >
+            <div class="featured__card">
+              <div class="featured__stage">
+                <div class="featured__copy">
+                  <div class="featured__copy-slot is-active" data-featured-copy-a>
+                    <h2 class="featured__title" data-featured-title></h2>
+                    <p class="featured__quote" data-featured-quote></p>
+                  </div>
+                  <div class="featured__copy-slot" data-featured-copy-b aria-hidden="true">
+                    <h2 class="featured__title" data-featured-title></h2>
+                    <p class="featured__quote" data-featured-quote></p>
+                  </div>
+                </div>
+                <div class="featured__media">
+                  <div class="featured__media-slot is-active" data-featured-media-a>
+                    <img data-featured-img alt="" width="287" height="499" />
+                  </div>
+                  <div class="featured__media-slot" data-featured-media-b aria-hidden="true">
+                    <img data-featured-img alt="" width="287" height="499" />
+                  </div>
+                </div>
+              </div>
+              <div class="featured__dots" role="tablist" aria-label="Слайды">
+                <button
+                  class="featured__dot is-active"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-label="Слайд 1"
+                  data-featured-dot
+                  data-index="0"
+                ></button>
+                <button
+                  class="featured__dot"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Слайд 2"
+                  data-featured-dot
+                  data-index="1"
+                ></button>
+                <button
+                  class="featured__dot"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Слайд 3"
+                  data-featured-dot
+                  data-index="2"
+                ></button>
+                <button
+                  class="featured__dot"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Слайд 4"
+                  data-featured-dot
+                  data-index="3"
+                ></button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <div class="viewport-unsupported" hidden>
+      Мы пока не поддерживаем этот формат. Откройте страницу на компьютере.
+    </div>
+    <script src="../js/design-viewport.js"></script>
+    <script src="../js/slide-unlock.js"></script>
+    <script src="../js/featured-carousel.js"></script>
+  </body>
+</html>

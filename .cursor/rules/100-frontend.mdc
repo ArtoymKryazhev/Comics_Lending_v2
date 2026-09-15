@@ -1,0 +1,37 @@
+---
+globs: **/*.html, **/*.css, **/*.js, assets/**
+alwaysApply: false
+---
+# Frontend — HTML / CSS / JS
+
+## Разметка и стили
+- Семантичный HTML (`header`, `main`, `section`, `button`/`a` по смыслу).
+- Стили в CSS-файлах (`css/`, `css/index.css`). Не инлайн-стили без нужды.
+- Общие токены — в `css/tokens.css` (цвета, шрифты, размеры из Figma).
+- Desktop: макет **1920px** ширины. Mobile: **440px** (временно) через `html[data-layout="mobile"]` (не `@media` для desktop/mobile вариантов).
+- Размеры блоков в CSS — в **rem** (1rem = 1px макета при эталонной ширине артборда).
+- Обёртка `.page.page-index` + `css/layout.css`; Desktop **без** вертикального scroll; mobile — scroll разрешён.
+
+## Adaptive (EXAMPLE JS)
+- `js/design-viewport.js`: выбор layout, `--design-w`, resize/orientationchange.
+- **Фактически:** `innerWidth >= 1024` → desktop, иначе mobile.
+- Scale по ширине: desktop `min(1px, 100vw/1920)`, mobile `100vw/440`.
+- Gate: ширина &lt;320px → `.viewport-unsupported`.
+- Stubs без layout-обёртки.
+- `design-viewport.js` — пример; менять только с одобрения.
+
+## Ассеты
+- Экспортировать из Figma MCP, класть в `assets/index/`.
+- Не рисовать иконки/mockup руками и не подставлять чужие SVG.
+- В HTML — только локальные пути к ассетам в репо, не временные `figma.com/api/mcp/asset/...` URL.
+
+## JS
+- Viewport: `js/design-viewport.js` на странице.
+- Никакой отправки форм, API-вызовов, авторизации.
+
+## Header / footer
+- Одна страница; BEM: `.header`, `.footer` и модификаторы.
+- Механика header — `docs/header-behavior.md` (как в Kutukov / Chrome-safe).
+
+## Эталон
+- Каркас страницы: `examples/page-skeleton.html`
