@@ -28,11 +28,11 @@ Figma fileKey: `jElL6muhfPPhZSn3f5mi2C`
 ## Фазы
 1. **Desktop** — пиксель-в-пиксель по Figma, блок за блоком
 2. **Adaptive** — Fit rem-scale (разрешён); порог mobile не через composition breakpoints
-3. **Mobile-макеты** — когда появятся отдельные фреймы
+3. **Mobile** — provisional stacked 396 без макета; Figma-фреймы — когда появятся
 
 ## Scroll
 - Desktop: **overflow hidden** (скролл запрещён)
-- Mobile layout: scroll разрешён
+- Mobile layout: scroll разрешён; header `position: fixed`
 
 Ширина артборда на `<html>`: `data-artboard-w`, `data-artboard-w-mobile`. Высота (`data-artboard-h*`) — для fit-scale.
 
@@ -55,7 +55,8 @@ Figma fileKey: `jElL6muhfPPhZSn3f5mi2C`
 На каждом шаге: `get_design_context` + скриншот node-id → ассеты → Desktop (+ rem-scale).
 
 ## Header
-Механика (absolute внутри `.page` + spacer, pointer-events, backdrop-filter) — `docs/header-behavior.md`. Визуал — из фрейма Comics.
+- Desktop: `absolute` внутри `.page` + spacer + pointer-events (Fit) — `docs/header-behavior.md`
+- Mobile: `fixed` + spacer (sticky при scroll); визуал бара из Comics / 396rem
 
 ## Запреты
 - Не вводить фреймворки, препроцессоры, сборщики без явного запроса

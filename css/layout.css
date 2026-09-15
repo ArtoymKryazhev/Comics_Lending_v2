@@ -55,6 +55,12 @@ html[data-layout="mobile"][data-viewport="ok"] body {
   overflow-y: auto;
 }
 
+html[data-layout="mobile"][data-viewport="ok"] .page {
+  height: auto;
+  min-height: 100%;
+  overflow: visible;
+}
+
 /* Заглушка: обычный px, без rem-scale */
 html[data-layout="mobile"][data-viewport="unsupported"] {
   font-size: 16px;

@@ -20,7 +20,7 @@ HTML + CSS + vanilla JS.
 ## Фазы вёрстки
 1. **Desktop** — пиксель-в-пиксель по Figma, блок за блоком
 2. **Adaptive** — пропорциональный rem-scale (**разрешён** с задачи Header); не через CSS breakpoints для смены композиции
-3. **Mobile-макеты** — отдельные фреймы, когда появятся; до этого mobile layout = тот же состав, узкая колонка
+3. **Mobile** — provisional stacked column 396 (без макета); пиксель-полировка — когда появятся фреймы
 
 ## Scroll
 - **Desktop:** вертикальный scroll **запрещён** (фиксированная высота артборда 1080)
@@ -37,13 +37,14 @@ HTML + CSS + vanilla JS.
 > Adaptive обновлён под Fit / margin-first (одобрение пользователя). Крупные переписывания — с одобрения.
 
 ## Header
-Механика fixed + blur (Chrome) — см. [docs/header-behavior.md](docs/header-behavior.md). Визуал — из фрейма Comics.
+- **Desktop:** `absolute` внутри `.page` + Fit — см. [docs/header-behavior.md](docs/header-behavior.md)
+- **Mobile:** `fixed` + spacer (sticky при scroll), бар 396rem; blur не нужен (непрозрачный bg)
 
 ## Страницы
 
 | Файл | Назначение | Desktop | Mobile |
 | --- | --- | --- | --- |
-| [pages/index.html](pages/index.html) | Одностраничный лендинг | [`1:2`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=1-2) (обзор) | TODO |
+| [pages/index.html](pages/index.html) | Одностраничный лендинг | [`1:2`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=1-2) (обзор) | provisional (без макета) |
 
 ## Структура
 - `css/` — reset, tokens, layout (пример), стили страницы

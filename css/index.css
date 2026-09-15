@@ -87,8 +87,7 @@ html[data-layout="desktop"] .header__menu img {
   object-fit: contain;
 }
 
-/* Header — mobile layout (пропорциональный rem-scale; отдельного mobile-макета ещё нет)
-   Бар по контентной колонке 396; те же элементы-заглушки */
+/* Header — mobile: fixed (sticky при scroll), как Kutukov; blur не нужен — bg непрозрачный */
 
 html[data-layout="mobile"] .page-index::before {
   content: "";
@@ -97,7 +96,7 @@ html[data-layout="mobile"] .page-index::before {
 }
 
 html[data-layout="mobile"] .header {
-  position: absolute;
+  position: fixed;
   top: 22rem;
   left: 0;
   right: 0;
@@ -205,7 +204,8 @@ html[data-layout="desktop"] .brand__card {
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
 }
 
-html[data-layout="desktop"] .brand__title {
+html[data-layout="desktop"] .brand__title,
+html[data-layout="mobile"] .brand__title {
   position: absolute;
   left: 36rem;
   top: 36rem;
@@ -219,7 +219,8 @@ html[data-layout="desktop"] .brand__title {
   white-space: nowrap;
 }
 
-html[data-layout="desktop"] .brand__subtitle {
+html[data-layout="desktop"] .brand__subtitle,
+html[data-layout="mobile"] .brand__subtitle {
   position: absolute;
   left: 36rem;
   top: 111rem;
@@ -233,7 +234,8 @@ html[data-layout="desktop"] .brand__subtitle {
   color: var(--color-text-muted);
 }
 
-html[data-layout="desktop"] .brand__art {
+html[data-layout="desktop"] .brand__art,
+html[data-layout="mobile"] .brand__art {
   position: absolute;
   left: 62rem;
   top: 216rem;
@@ -243,7 +245,8 @@ html[data-layout="desktop"] .brand__art {
   pointer-events: none;
 }
 
-html[data-layout="desktop"] .brand__art img {
+html[data-layout="desktop"] .brand__art img,
+html[data-layout="mobile"] .brand__art img {
   display: block;
   width: 100%;
   height: 100%;
@@ -251,7 +254,8 @@ html[data-layout="desktop"] .brand__art img {
   object-position: center top;
 }
 
-html[data-layout="desktop"] .brand__slider {
+html[data-layout="desktop"] .brand__slider,
+html[data-layout="mobile"] .brand__slider {
   position: absolute;
   left: 15rem;
   top: 464rem;
@@ -271,7 +275,8 @@ html[data-layout="desktop"] .brand__slider {
 }
 
 /* Текст на месте; круг — ластик с мягким краем (mask), без каши из наслоения */
-html[data-layout="desktop"] .brand__slider-label-wrap {
+html[data-layout="desktop"] .brand__slider-label-wrap,
+html[data-layout="mobile"] .brand__slider-label-wrap {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -313,7 +318,8 @@ html[data-layout="desktop"] .brand__slider-label-wrap {
   mask-composite: intersect;
 }
 
-html[data-layout="desktop"] .brand__slider-label {
+html[data-layout="desktop"] .brand__slider-label,
+html[data-layout="mobile"] .brand__slider-label {
   margin: 0;
   font-family: var(--font-family-base);
   font-size: 24rem;
@@ -324,7 +330,8 @@ html[data-layout="desktop"] .brand__slider-label {
   text-align: center;
 }
 
-html[data-layout="desktop"] .brand__slider-knob {
+html[data-layout="desktop"] .brand__slider-knob,
+html[data-layout="mobile"] .brand__slider-knob {
   position: absolute;
   left: 6rem;
   top: 5rem;
@@ -340,11 +347,13 @@ html[data-layout="desktop"] .brand__slider-knob {
   will-change: transform;
 }
 
-html[data-layout="desktop"] .brand__slider-knob:active {
+html[data-layout="desktop"] .brand__slider-knob:active,
+html[data-layout="mobile"] .brand__slider-knob:active {
   cursor: grabbing;
 }
 
-html[data-layout="desktop"] .brand__slider-knob img {
+html[data-layout="desktop"] .brand__slider-knob img,
+html[data-layout="mobile"] .brand__slider-knob img {
   display: block;
   width: 100%;
   height: 100%;
@@ -370,14 +379,16 @@ html[data-layout="desktop"] .featured__card {
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
 }
 
-html[data-layout="desktop"] .featured__stage {
+html[data-layout="desktop"] .featured__stage,
+html[data-layout="mobile"] .featured__stage {
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
 }
 
-html[data-layout="desktop"] .featured__copy {
+html[data-layout="desktop"] .featured__copy,
+html[data-layout="mobile"] .featured__copy {
   position: absolute;
   left: 36rem;
   top: 36rem;
@@ -386,7 +397,8 @@ html[data-layout="desktop"] .featured__copy {
   z-index: 2;
 }
 
-html[data-layout="desktop"] .featured__copy-slot {
+html[data-layout="desktop"] .featured__copy-slot,
+html[data-layout="mobile"] .featured__copy-slot {
   position: absolute;
   inset: 0;
   display: flex;
@@ -396,47 +408,61 @@ html[data-layout="desktop"] .featured__copy-slot {
   visibility: hidden;
   transform: translate3d(0, 0, 0);
   pointer-events: none;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
 }
 
-html[data-layout="desktop"] .featured__copy-slot.is-active {
+html[data-layout="desktop"] .featured__copy-slot.is-active,
+html[data-layout="mobile"] .featured__copy-slot.is-active {
   opacity: 1;
   visibility: visible;
   z-index: 1;
 }
 
+html[data-layout="desktop"] .featured__copy-slot.is-animating,
+html[data-layout="mobile"] .featured__copy-slot.is-animating {
+  visibility: visible;
+  transition: none;
+}
+
 html[data-layout="desktop"] .featured__copy-slot.is-enter,
-html[data-layout="desktop"] .featured__copy-slot.is-exit {
-  transition:
-    opacity 0.45s ease,
-    transform 0.45s ease;
+html[data-layout="desktop"] .featured__copy-slot.is-exit,
+html[data-layout="mobile"] .featured__copy-slot.is-enter,
+html[data-layout="mobile"] .featured__copy-slot.is-exit {
   visibility: visible;
 }
 
-html[data-layout="desktop"] .featured__copy-slot.is-enter-from-right {
+html[data-layout="desktop"] .featured__copy-slot.is-enter-from-right,
+html[data-layout="mobile"] .featured__copy-slot.is-enter-from-right {
   opacity: 0;
   visibility: visible;
   transform: translate3d(36rem, 0, 0);
   transition: none;
 }
 
-html[data-layout="desktop"] .featured__copy-slot.is-enter-from-left {
+html[data-layout="desktop"] .featured__copy-slot.is-enter-from-left,
+html[data-layout="mobile"] .featured__copy-slot.is-enter-from-left {
   opacity: 0;
   visibility: visible;
   transform: translate3d(-36rem, 0, 0);
   transition: none;
 }
 
-html[data-layout="desktop"] .featured__copy-slot.is-exit-left {
+html[data-layout="desktop"] .featured__copy-slot.is-exit-left,
+html[data-layout="mobile"] .featured__copy-slot.is-exit-left {
   opacity: 0;
   transform: translate3d(-36rem, 0, 0);
 }
 
-html[data-layout="desktop"] .featured__copy-slot.is-exit-right {
+html[data-layout="desktop"] .featured__copy-slot.is-exit-right,
+html[data-layout="mobile"] .featured__copy-slot.is-exit-right {
   opacity: 0;
   transform: translate3d(36rem, 0, 0);
 }
 
-html[data-layout="desktop"] .featured__title {
+html[data-layout="desktop"] .featured__title,
+html[data-layout="mobile"] .featured__title {
   margin: 0;
   max-width: 263rem;
   font-family: var(--font-family-base);
@@ -447,7 +473,8 @@ html[data-layout="desktop"] .featured__title {
   text-transform: uppercase;
 }
 
-html[data-layout="desktop"] .featured__quote {
+html[data-layout="desktop"] .featured__quote,
+html[data-layout="mobile"] .featured__quote {
   margin: 0 0 8rem;
   max-width: 296rem;
   font-family: var(--font-family-base);
@@ -457,7 +484,8 @@ html[data-layout="desktop"] .featured__quote {
   color: var(--color-featured-quote);
 }
 
-html[data-layout="desktop"] .featured__media {
+html[data-layout="desktop"] .featured__media,
+html[data-layout="mobile"] .featured__media {
   position: absolute;
   left: 357rem;
   top: 28rem;
@@ -468,53 +496,68 @@ html[data-layout="desktop"] .featured__media {
   overflow: hidden;
 }
 
-html[data-layout="desktop"] .featured__media-slot {
+html[data-layout="desktop"] .featured__media-slot,
+html[data-layout="mobile"] .featured__media-slot {
   position: absolute;
   inset: 0;
   opacity: 0;
   visibility: hidden;
   transform: translate3d(0, 0, 0);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
 }
 
-html[data-layout="desktop"] .featured__media-slot.is-active {
+html[data-layout="desktop"] .featured__media-slot.is-active,
+html[data-layout="mobile"] .featured__media-slot.is-active {
   opacity: 1;
   visibility: visible;
   z-index: 1;
 }
 
+html[data-layout="desktop"] .featured__media-slot.is-animating,
+html[data-layout="mobile"] .featured__media-slot.is-animating {
+  visibility: visible;
+  transition: none;
+}
+
 html[data-layout="desktop"] .featured__media-slot.is-enter,
-html[data-layout="desktop"] .featured__media-slot.is-exit {
-  transition:
-    opacity 0.45s ease,
-    transform 0.45s ease;
+html[data-layout="desktop"] .featured__media-slot.is-exit,
+html[data-layout="mobile"] .featured__media-slot.is-enter,
+html[data-layout="mobile"] .featured__media-slot.is-exit {
   visibility: visible;
 }
 
-html[data-layout="desktop"] .featured__media-slot.is-enter-from-right {
+html[data-layout="desktop"] .featured__media-slot.is-enter-from-right,
+html[data-layout="mobile"] .featured__media-slot.is-enter-from-right {
   opacity: 0;
   visibility: visible;
   transform: translate3d(40rem, 0, 0);
   transition: none;
 }
 
-html[data-layout="desktop"] .featured__media-slot.is-enter-from-left {
+html[data-layout="desktop"] .featured__media-slot.is-enter-from-left,
+html[data-layout="mobile"] .featured__media-slot.is-enter-from-left {
   opacity: 0;
   visibility: visible;
   transform: translate3d(-40rem, 0, 0);
   transition: none;
 }
 
-html[data-layout="desktop"] .featured__media-slot.is-exit-left {
+html[data-layout="desktop"] .featured__media-slot.is-exit-left,
+html[data-layout="mobile"] .featured__media-slot.is-exit-left {
   opacity: 0;
   transform: translate3d(-40rem, 0, 0);
 }
 
-html[data-layout="desktop"] .featured__media-slot.is-exit-right {
+html[data-layout="desktop"] .featured__media-slot.is-exit-right,
+html[data-layout="mobile"] .featured__media-slot.is-exit-right {
   opacity: 0;
   transform: translate3d(40rem, 0, 0);
 }
 
-html[data-layout="desktop"] .featured__media-slot img {
+html[data-layout="desktop"] .featured__media-slot img,
+html[data-layout="mobile"] .featured__media-slot img {
   display: block;
   width: 100%;
   height: 100%;
@@ -522,7 +565,8 @@ html[data-layout="desktop"] .featured__media-slot img {
   border-radius: 25rem;
 }
 
-html[data-layout="desktop"] .featured__dots {
+html[data-layout="desktop"] .featured__dots,
+html[data-layout="mobile"] .featured__dots {
   position: absolute;
   left: 36rem;
   top: 511rem;
@@ -535,7 +579,8 @@ html[data-layout="desktop"] .featured__dots {
   height: 8rem;
 }
 
-html[data-layout="desktop"] .featured__dot {
+html[data-layout="desktop"] .featured__dot,
+html[data-layout="mobile"] .featured__dot {
   position: relative;
   flex-shrink: 0;
   width: 38rem;
@@ -548,7 +593,8 @@ html[data-layout="desktop"] .featured__dot {
 }
 
 /* Серая подложка всегда; белый слой — перетекание через opacity */
-html[data-layout="desktop"] .featured__dot::before {
+html[data-layout="desktop"] .featured__dot::before,
+html[data-layout="mobile"] .featured__dot::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -556,7 +602,8 @@ html[data-layout="desktop"] .featured__dot::before {
   background: var(--color-featured-dot);
 }
 
-html[data-layout="desktop"] .featured__dot::after {
+html[data-layout="desktop"] .featured__dot::after,
+html[data-layout="mobile"] .featured__dot::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -566,11 +613,13 @@ html[data-layout="desktop"] .featured__dot::after {
   transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html[data-layout="desktop"] .featured__dot.is-active::after {
+html[data-layout="desktop"] .featured__dot.is-active::after,
+html[data-layout="mobile"] .featured__dot.is-active::after {
   opacity: 1;
 }
 
-html[data-layout="desktop"] .featured__dot:focus-visible {
+html[data-layout="desktop"] .featured__dot:focus-visible,
+html[data-layout="mobile"] .featured__dot:focus-visible {
   outline: 2rem solid #ffffff;
   outline-offset: 2rem;
 }
@@ -803,11 +852,325 @@ html[data-layout="desktop"] .footer__rustore img {
   object-fit: cover;
 }
 
-/* Mobile: блоки только Desktop — скрываем до появления mobile-макета */
-html[data-layout="mobile"] .brand,
-html[data-layout="mobile"] .featured,
-html[data-layout="mobile"] .hero-row,
-html[data-layout="mobile"] .subscribe,
-html[data-layout="mobile"] .footer {
+/* Mobile layout без макета: колонка 396, стек Brand → Featured → Subscribe → Footer */
+
+html[data-layout="mobile"] .page-index {
+  padding-bottom: 40rem;
+}
+
+html[data-layout="mobile"] .hero-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 22rem;
+  width: 396rem;
+  margin: 24rem auto 0;
+}
+
+html[data-layout="mobile"] .brand {
+  flex-shrink: 0;
+  width: 396rem;
+  margin: 0;
+}
+
+html[data-layout="mobile"] .brand__card {
+  position: relative;
+  width: 396rem;
+  height: 555rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1rem solid var(--color-brand-card-border);
+  border-radius: 35rem;
+  background: var(--color-brand-card-bg);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+}
+
+html[data-layout="mobile"] .brand__subtitle {
+  width: 324rem;
+}
+
+html[data-layout="mobile"] .brand__slider {
+  width: 366rem;
+}
+
+/* Featured: desktop-композиция через zoom (не transform:scale — иначе
+   ломаются CSS-transition у слотов и hit-testing в Chrome). */
+html[data-layout="mobile"] .featured {
+  position: relative;
+  flex-shrink: 0;
+  width: 396rem;
+  height: calc(555rem * 396 / 672);
+  overflow: hidden;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html[data-layout="mobile"] .featured__card {
+  position: relative;
+  width: 672rem;
+  height: 555rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 35rem;
+  background: var(--color-featured-bg);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+  transform: scale(calc(396 / 672));
+  transform-origin: top left;
+}
+
+@supports (zoom: 1) {
+  html[data-layout="mobile"] .featured__card {
+    transform: none;
+    zoom: calc(396 / 672);
+  }
+}
+
+/* Прозрачный слой жестов над карточкой; снизу щель под dots */
+html[data-layout="desktop"] .featured__swipe {
   display: none;
+}
+
+html[data-layout="mobile"] .featured__swipe {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 36rem;
+  z-index: 5;
+  touch-action: pan-y;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+html[data-layout="mobile"] .featured__dots {
+  z-index: 6;
+}
+
+/* Subscribe — вертикальный стек: features → price → CTA */
+html[data-layout="mobile"] .subscribe {
+  width: 396rem;
+  margin: 22rem auto 0;
+}
+
+html[data-layout="mobile"] .subscribe__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20rem;
+  box-sizing: border-box;
+  width: 396rem;
+  height: auto;
+  padding: 24rem 22rem;
+  border: 1rem solid var(--color-subscribe-border);
+  border-radius: 35rem;
+  background: var(--color-subscribe-bg);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+}
+
+html[data-layout="mobile"] .subscribe__left {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+html[data-layout="mobile"] .subscribe__title {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 28rem;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--color-text);
+  white-space: normal;
+}
+
+html[data-layout="mobile"] .subscribe__features {
+  display: flex;
+  flex-direction: column;
+  gap: 16rem;
+  margin: 18rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+html[data-layout="mobile"] .subscribe__feature {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12rem;
+}
+
+html[data-layout="mobile"] .subscribe__feature-icon {
+  flex-shrink: 0;
+  width: 36rem;
+  height: 36rem;
+}
+
+html[data-layout="mobile"] .subscribe__feature-text {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-family-base);
+  font-size: 14rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-text);
+}
+
+html[data-layout="mobile"] .subscribe__right {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 8rem;
+  width: 100%;
+  margin-top: 0;
+}
+
+html[data-layout="mobile"] .subscribe__price {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  min-height: 106rem;
+  padding: 22rem;
+  border-radius: 25rem;
+  background: linear-gradient(
+    90deg,
+    var(--color-subscribe-price-from) 0%,
+    var(--color-subscribe-price-to) 87.5%
+  );
+  box-shadow: 0 4rem 4rem rgba(0, 0, 0, 0.05);
+}
+
+html[data-layout="mobile"] .subscribe__price-value {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 32rem;
+  font-weight: 500;
+  line-height: normal;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+html[data-layout="mobile"] .subscribe__price-note {
+  margin: 6rem 0 0;
+  font-family: var(--font-family-base);
+  font-size: 14rem;
+  font-weight: 400;
+  line-height: normal;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: normal;
+}
+
+html[data-layout="mobile"] .subscribe__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 62rem;
+  padding: 14rem 16rem;
+  border-radius: 20rem;
+  background: var(--color-subscribe-cta);
+  box-shadow: 0 4rem 4rem rgba(0, 0, 0, 0.05);
+  font-family: var(--font-family-base);
+  font-size: 18rem;
+  font-weight: 500;
+  line-height: normal;
+  white-space: normal;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+html[data-layout="mobile"] .subscribe__cta-main {
+  color: #ffffff;
+}
+
+html[data-layout="mobile"] .subscribe__cta-free {
+  margin-left: 0.3em;
+  color: var(--color-subscribe-cta-muted);
+}
+
+/* Footer — flow-стек company → legal → RuStore */
+html[data-layout="mobile"] .footer {
+  width: 396rem;
+  margin: 22rem auto 0;
+}
+
+html[data-layout="mobile"] .footer__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16rem;
+  box-sizing: border-box;
+  width: 396rem;
+  height: auto;
+  padding: 22rem;
+  border: 1rem solid var(--color-footer-border);
+  border-radius: 25rem;
+  background: var(--color-footer-bg);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+}
+
+html[data-layout="mobile"] .footer__company {
+  position: static;
+}
+
+html[data-layout="mobile"] .footer__company-name {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 20rem;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+html[data-layout="mobile"] .footer__company-meta {
+  margin: 4rem 0 0;
+  font-family: var(--font-family-base);
+  font-size: 14rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-text-muted);
+  white-space: normal;
+}
+
+html[data-layout="mobile"] .footer__legal {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+html[data-layout="mobile"] .footer__legal-link {
+  font-family: var(--font-family-base);
+  font-size: 14rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-text-muted);
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+html[data-layout="mobile"] .footer__rustore {
+  position: static;
+  display: block;
+  width: 52rem;
+  height: 52rem;
+  overflow: hidden;
+  border-radius: 30rem;
+  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+html[data-layout="mobile"] .footer__rustore img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

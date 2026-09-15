@@ -1,10 +1,10 @@
 # Current status
 
-**Состояние:** Desktop-лендинг собран. Adaptive: **margin-first** (поля до контента 20px без scale) → пропорциональный scale, cap 4K; mobile при `w<1200 || h<600`. Desktop scroll **запрещён**.
+**Состояние:** Desktop + provisional mobile (без Figma). Adaptive: margin-first → scale, cap 4K; mobile при `w<1200 || h<600`. Desktop scroll запрещён; mobile scroll + fixed header.
 
-**Фазы:** Desktop + adaptive → Mobile-макеты блоков — когда появятся фреймы.
+**Фазы:** Desktop + adaptive + mobile stack (без макета) → пиксель-полировка mobile, когда появятся фреймы.
 
-**Следующий шаг:** Mobile-артборды блоков (сейчас на mobile layout контент скрыт, виден в основном header).
+**Следующий шаг:** Mobile-артборды из Figma (если будут) — заменить provisional stack на пиксель-в-пиксель.
 
 ---
 
@@ -17,13 +17,13 @@
 - [x] Subscribe (`55:70`) — CTA-заглушка
 - [x] Footer (`38:17`) — legal / RuStore-заглушки
 
-### Mobile
-- [ ] TODO: артборд / node-id — ещё нет
-- [x] Header (тот же состав, бар 396rem; без отдельного Figma — подогнано под контентную колонку)
-- [ ] Brand / intro card (desktop-only пока)
-- [ ] Featured comic (desktop-only пока)
-- [ ] Subscribe (desktop-only пока)
-- [ ] Footer (desktop-only пока)
+### Mobile (без макета — stacked 396rem)
+- [ ] TODO: артборд / node-id — ещё нет (проvisional layout)
+- [x] Header — бар 396rem, `position: fixed`, sticky при scroll
+- [x] Brand — ширина 396, под Featured
+- [x] Featured — ширина 396 (scale desktop 672→396)
+- [x] Subscribe — features → price → CTA колонкой
+- [x] Footer — company → legal → RuStore колонкой
 
 ### Adaptive
 - [x] Margin-first: scale = 1, пока до контента 1083 по бокам ≥ 20px и `vh ≥ 1080`
@@ -41,7 +41,7 @@
 - Subscribe: [`55:70`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=55-70)
 - Footer: [`38:17`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=38-17)
 - Обзор Desktop: [`1:2`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=1-2) (1920×1080)
-- Mobile: **TODO**
+- Mobile: **TODO** (сейчас provisional stacked column)
 
 ---
 
@@ -57,4 +57,5 @@
 - Header / Continue / legal / RuStore — **не кликабельны** (заглушки)
 - Тексты footer как в Figma (`конфидициальности`, `ОРГН`)
 - Desktop без вертикального скролла
+- Mobile без Figma — композиция provisional (не пиксель-в-пиксель)
 - `design-viewport.js` — EXAMPLE
