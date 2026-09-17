@@ -811,13 +811,15 @@ html[data-layout="desktop"] .footer__legal {
   position: absolute;
   left: 459rem;
   top: 29rem;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+  display: block;
+  max-width: 510rem;
 }
 
 html[data-layout="desktop"] .footer__legal-link {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4rem;
   margin: 0;
   padding: 0;
   border: none;
@@ -832,6 +834,10 @@ html[data-layout="desktop"] .footer__legal-link {
   cursor: pointer;
   pointer-events: auto;
   user-select: none;
+}
+
+html[data-layout="desktop"] .footer__legal-line {
+  display: block;
 }
 
 html[data-layout="desktop"] .footer__legal-link:hover,
@@ -1106,7 +1112,7 @@ html[data-layout="mobile"] .subscribe__cta-free {
   color: var(--color-subscribe-cta-muted);
 }
 
-/* Footer — flow-стек company → legal → RuStore */
+/* Footer — mobile: company + RuStore в ряд, политика в 2 строки ниже */
 html[data-layout="mobile"] .footer {
   width: 396rem;
   margin: 22rem auto 0;
@@ -1114,14 +1120,18 @@ html[data-layout="mobile"] .footer {
 
 html[data-layout="mobile"] .footer__card {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "company rustore"
+    "legal legal";
+  column-gap: 16rem;
+  row-gap: 14rem;
+  align-items: center;
   box-sizing: border-box;
   width: 396rem;
   height: auto;
-  padding: 22rem;
+  padding: 20rem 22rem;
   border: 1rem solid var(--color-footer-border);
   border-radius: 25rem;
   background: var(--color-footer-bg);
@@ -1130,12 +1140,14 @@ html[data-layout="mobile"] .footer__card {
 
 html[data-layout="mobile"] .footer__company {
   position: static;
+  grid-area: company;
+  min-width: 0;
 }
 
 html[data-layout="mobile"] .footer__company-name {
   margin: 0;
   font-family: var(--font-family-base);
-  font-size: 20rem;
+  font-size: 18rem;
   font-weight: 600;
   line-height: normal;
   color: var(--color-text);
@@ -1145,7 +1157,7 @@ html[data-layout="mobile"] .footer__company-name {
 html[data-layout="mobile"] .footer__company-meta {
   margin: 4rem 0 0;
   font-family: var(--font-family-base);
-  font-size: 14rem;
+  font-size: 13rem;
   font-weight: 500;
   line-height: 1.35;
   color: var(--color-text-muted);
@@ -1154,13 +1166,16 @@ html[data-layout="mobile"] .footer__company-meta {
 
 html[data-layout="mobile"] .footer__legal {
   position: static;
-  display: flex;
-  flex-direction: column;
-  gap: 6rem;
+  grid-area: legal;
+  display: block;
+  max-width: 100%;
 }
 
 html[data-layout="mobile"] .footer__legal-link {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4rem;
   margin: 0;
   padding: 0;
   border: none;
@@ -1168,13 +1183,17 @@ html[data-layout="mobile"] .footer__legal-link {
   font-family: var(--font-family-base);
   font-size: 14rem;
   font-weight: 500;
-  line-height: 1.35;
+  line-height: normal;
   color: var(--color-text-muted);
   text-align: left;
   white-space: normal;
   cursor: pointer;
   pointer-events: auto;
   user-select: none;
+}
+
+html[data-layout="mobile"] .footer__legal-line {
+  display: block;
 }
 
 html[data-layout="mobile"] .footer__legal-link:hover,
@@ -1328,6 +1347,12 @@ html[data-layout="mobile"] .footer__legal-link:focus-visible {
   margin-bottom: 6rem;
 }
 
+.legal-modal__body a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .legal-modal__note {
   margin-top: 16rem;
   color: var(--color-text-muted);
@@ -1370,6 +1395,7 @@ html[data-layout="mobile"] .legal-modal__close {
 
 html[data-layout="mobile"] .footer__rustore {
   position: static;
+  grid-area: rustore;
   display: block;
   width: 52rem;
   height: 52rem;
@@ -1378,6 +1404,8 @@ html[data-layout="mobile"] .footer__rustore {
   box-shadow: 0 0 4rem rgba(0, 0, 0, 0.1);
   pointer-events: auto;
   cursor: pointer;
+  justify-self: end;
+  align-self: center;
 }
 
 html[data-layout="mobile"] .footer__rustore img {
