@@ -64,6 +64,8 @@ html[data-layout="desktop"] .header__rustore {
   height: 38rem;
   border-radius: 35rem;
   overflow: hidden;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 html[data-layout="desktop"] .header__rustore img {
@@ -152,6 +154,8 @@ html[data-layout="mobile"] .header__rustore {
   height: 38rem;
   border-radius: 35rem;
   overflow: hidden;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 html[data-layout="mobile"] .header__rustore img {
@@ -579,6 +583,7 @@ html[data-layout="mobile"] .featured__dots {
   height: 8rem;
 }
 
+/* Серая подложка; белый fill — scaleX 0→1 за время автосмены (JS) */
 html[data-layout="desktop"] .featured__dot,
 html[data-layout="mobile"] .featured__dot {
   position: relative;
@@ -588,34 +593,24 @@ html[data-layout="mobile"] .featured__dot {
   padding: 0;
   border: none;
   border-radius: 15rem;
-  background: transparent;
+  background: var(--color-featured-dot);
+  overflow: hidden;
   cursor: pointer;
 }
 
-/* Серая подложка всегда; белый слой — перетекание через opacity */
-html[data-layout="desktop"] .featured__dot::before,
-html[data-layout="mobile"] .featured__dot::before {
-  content: "";
+html[data-layout="desktop"] .featured__dot-fill,
+html[data-layout="mobile"] .featured__dot-fill {
   position: absolute;
-  inset: 0;
-  border-radius: 15rem;
-  background: var(--color-featured-dot);
-}
-
-html[data-layout="desktop"] .featured__dot::after,
-html[data-layout="mobile"] .featured__dot::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 15rem;
   background: var(--color-featured-dot-active);
-  opacity: 0;
-  transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html[data-layout="desktop"] .featured__dot.is-active::after,
-html[data-layout="mobile"] .featured__dot.is-active::after {
-  opacity: 1;
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+  will-change: transform;
 }
 
 html[data-layout="desktop"] .featured__dot:focus-visible,
@@ -842,7 +837,8 @@ html[data-layout="desktop"] .footer__rustore {
   overflow: hidden;
   border-radius: 30rem;
   box-shadow: 0 0 4rem rgba(0, 0, 0, 0.1);
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 html[data-layout="desktop"] .footer__rustore img {
@@ -1165,7 +1161,8 @@ html[data-layout="mobile"] .footer__rustore {
   overflow: hidden;
   border-radius: 30rem;
   box-shadow: 0 0 4rem rgba(0, 0, 0, 0.1);
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 html[data-layout="mobile"] .footer__rustore img {

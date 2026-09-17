@@ -1,7 +1,8 @@
 /**
  * Featured carousel — Layered Mask Shift.
  * Рамка и статус-бар статичны; title/quote/image — dual-slot slide+fade.
- * Автопрокрутка 5с, пауза при hover; клик по точкам; свайп (mobile overlay).
+ * Автопрокрутка 5с; клик по точкам; свайп (mobile overlay).
+ * Статус-бар: активная полоска fill 0→100% за AUTO_MS (таймер автосмены).
  */
 (function () {
   var SWIPE_MIN_PX = 36;
@@ -64,7 +65,6 @@
     var mediaA = root.querySelector("[data-featured-media-a]");
     var mediaB = root.querySelector("[data-featured-media-b]");
     var dots = root.querySelectorAll("[data-featured-dot]");
-    var card = root.querySelector(".featured__card") || root;
     var swipe = root.querySelector("[data-featured-swipe]");
 
     if (!copyA || !copyB || !mediaA || !mediaB) return;
@@ -73,6 +73,7 @@
     var useA = true;
     var animating = false;
     var timer = null;
+    var autoOn = false;
     var hasWaapi =
       typeof Element !== "undefined" &&
       typeof Element.prototype.animate === "function";
@@ -82,26 +83,93 @@
     fillSlot(copyB, SLIDES[0]);
     fillSlot(mediaB, SLIDES[0]);
 
-    function setDots(i) {
-      for (var d = 0; d < dots.length; d++) {
-        var on = d === i;
-        dots[d].classList.toggle("is-active", on);
-        dots[d].setAttribute("aria-selected", on ? "true" : "false");
-      }
+    function getDotFill(dot) {
+      return dot.querySelector(".featured__dot-fill");
     }
 
-    function stopAuto() {
+    function clearTimer() {
       if (timer) {
-        window.clearInterval(timer);
+        window.clearTimeout(timer);
         timer = null;
       }
     }
 
-    function startAuto() {
-      stopAuto();
-      timer = window.setInterval(function () {
+    /** Мгновенно выставить scaleX без transition (0…1). */
+    function setFillScale(fill, scale) {
+      fill.style.transition = "none";
+      fill.style.transform = "scaleX(" + scale + ")";
+    }
+
+    function freezeActiveFill() {
+      var dot = dots[index];
+      if (!dot) return;
+      var fill = getDotFill(dot);
+      if (!fill) return;
+      var parentW = dot.getBoundingClientRect().width;
+      var fillW = fill.getBoundingClientRect().width;
+      var scale = parentW > 0 ? fillW / parentW : 0;
+      setFillScale(fill, Math.max(0, Math.min(1, scale)));
+    }
+
+    function setDots(i, runProgress) {
+      for (var d = 0; d < dots.length; d++) {
+        var dot = dots[d];
+        var fill = getDotFill(dot);
+        var on = d === i;
+
+        dot.classList.remove("is-active", "is-done", "is-paused");
+        dot.setAttribute("aria-selected", on ? "true" : "false");
+
+        if (fill) {
+          setFillScale(fill, 0);
+        }
+
+        if (on) {
+          dot.classList.add("is-active");
+        }
+      }
+
+      if (runProgress !== false) {
+        startProgress(i);
+      }
+    }
+
+    function startProgress(i) {
+      var dot = dots[i];
+      if (!dot) return;
+      var fill = getDotFill(dot);
+      if (!fill) return;
+
+      setFillScale(fill, 0);
+      /* reflow — чтобы transition стартовал от 0 */
+      void fill.offsetWidth;
+      fill.style.transition =
+        "transform " + AUTO_MS + "ms linear";
+      fill.style.transform = "scaleX(1)";
+    }
+
+    function stopAuto() {
+      autoOn = false;
+      clearTimer();
+      freezeActiveFill();
+      var active = dots[index];
+      if (active) active.classList.add("is-paused");
+    }
+
+    function armAuto() {
+      clearTimer();
+      if (!autoOn) return;
+      timer = window.setTimeout(function () {
+        timer = null;
         goTo((index + 1) % SLIDES.length, 1);
+        armAuto();
       }, AUTO_MS);
+    }
+
+    function startAuto() {
+      autoOn = true;
+      setDots(index, true);
+      armAuto();
     }
 
     function clearInlineMotion(el) {
@@ -152,7 +220,8 @@
 
       index = nextIndex;
       useA = !useA;
-      setDots(index);
+      /* Прогресс только при активном авто — иначе startAuto/клик запустят сами */
+      setDots(index, autoOn);
 
       /* Web Animations API — стабильно в Yandex/Chrome, без CSS-transition quirks */
       if (hasWaapi) {
@@ -287,9 +356,6 @@
       });
     }
 
-    card.addEventListener("mouseenter", stopAuto);
-    card.addEventListener("mouseleave", startAuto);
-
     /* Swipe: отдельный overlay (Chrome) + fallback на root */
     function bindSwipe(el) {
       if (!el) return;
@@ -400,7 +466,6 @@
 
     bindSwipe(swipe || root);
 
-    setDots(0);
     startAuto();
   }
 
