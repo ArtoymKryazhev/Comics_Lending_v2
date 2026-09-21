@@ -1,6 +1,6 @@
 # Comics Landing (Крумб)
 
-Статическая вёрстка одностраничного лендинга платформы «Крумб» по макетам Figma. Без бэка, без фреймворков.
+Статическая вёрстка лендингов платформы «Крумб» по макетам Figma (две страницы). Без бэка, без фреймворков.
 
 ## Стек
 HTML + CSS + vanilla JS.
@@ -44,12 +44,15 @@ HTML + CSS + vanilla JS.
 
 | Файл | Назначение | Desktop | Mobile |
 | --- | --- | --- | --- |
-| [pages/index.html](pages/index.html) | Одностраничный лендинг | [`1:2`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=1-2) (обзор) | provisional (без макета) |
+| [pages/index.html](pages/index.html) | Лендинг (подписка) | [`1:2`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=1-2) (обзор) | provisional (без макета) |
+| [pages/startup.html](pages/startup.html) | Стартап / партнёры | [`74:15`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/WEBSITE-STARTUP-?node-id=74-15) | provisional (без макета) |
+
+Навигации между страницами нет (независимые URL).
 
 ## Структура
-- `css/` — reset, tokens, layout (пример), стили страницы
+- `css/` — reset, tokens, layout, `index.css`, `startup.css` (дельты 2-й страницы)
 - `js/design-viewport.js` — layout + fit-scale
-- `assets/index/` — экспорты из Figma
+- `assets/index/` — экспорты из Figma; partner-логотипы также в `assets/`
 - `examples/page-skeleton.html` — эталон каркаса
 - `docs/plans/` — сохранённые планы
 - `docs/header-behavior.md` — поведение header из эталона

@@ -40,7 +40,9 @@
   }
 
   function isMobileReady() {
-    return document.querySelector(".page-index") !== null;
+    return (
+      document.querySelector(".page-index, .page-startup") !== null
+    );
   }
 
   function isSupported(vw, layout) {

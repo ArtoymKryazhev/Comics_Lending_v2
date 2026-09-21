@@ -275,7 +275,8 @@ html[data-layout="mobile"] .brand__slider {
   touch-action: none;
   user-select: none;
   --mask-x: 39rem;
-  --mask-r: 37rem;
+  --mask-r: 41rem;
+  --mask-wipe: 12rem;
 }
 
 /* Текст на месте; круг — ластик с мягким краем (mask), без каши из наслоения */
@@ -301,8 +302,8 @@ html[data-layout="mobile"] .brand__slider-label-wrap {
     linear-gradient(
       to right,
       transparent 0,
-      transparent max(0px, calc(var(--mask-x) - var(--mask-r) + 8px)),
-      #000 max(0px, calc(var(--mask-x) - var(--mask-r) + 8px))
+      transparent max(0px, calc(var(--mask-x) - var(--mask-r) + var(--mask-wipe))),
+      #000 max(0px, calc(var(--mask-x) - var(--mask-r) + var(--mask-wipe)))
     );
   mask-image:
     radial-gradient(
@@ -315,8 +316,8 @@ html[data-layout="mobile"] .brand__slider-label-wrap {
     linear-gradient(
       to right,
       transparent 0,
-      transparent max(0px, calc(var(--mask-x) - var(--mask-r) + 8px)),
-      #000 max(0px, calc(var(--mask-x) - var(--mask-r) + 8px))
+      transparent max(0px, calc(var(--mask-x) - var(--mask-r) + var(--mask-wipe))),
+      #000 max(0px, calc(var(--mask-x) - var(--mask-r) + var(--mask-wipe)))
     );
   -webkit-mask-composite: source-in;
   mask-composite: intersect;

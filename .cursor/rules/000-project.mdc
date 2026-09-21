@@ -3,7 +3,7 @@ alwaysApply: true
 ---
 # Comics Landing (Крумб) — базовые правила
 
-Статическая вёрстка одностраничного лендинга «Крумб» по Figma. Источник истины — код и `.cursor/rules/`. При расхождении верь коду.
+Статическая вёрстка лендингов «Крумб» по Figma. Источник истины — код и `.cursor/rules/`. При расхождении верь коду.
 
 ## Стек
 - Frontend: HTML + CSS + vanilla JS
@@ -11,8 +11,11 @@ alwaysApply: true
 - Без бэкенда, сборки и package-менеджера
 
 ## Страницы
-Одна страница в `pages/`:
+Страницы в `pages/`:
 - `pages/index.html` — лендинг (обзор Desktop [`1:2`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=1-2))
+- `pages/startup.html` — стартап / партнёры (обзор [`74:15`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/WEBSITE-STARTUP-?node-id=74-15); слайды `75:117`, `75:130`, `75:141`)
+
+Навигации между страницами нет. Стили startup — в `css/startup.css` (дельты поверх `index.css`).
 
 Figma fileKey: `jElL6muhfPPhZSn3f5mi2C`
 
@@ -22,6 +25,7 @@ Figma fileKey: `jElL6muhfPPhZSn3f5mi2C`
 | Страница | Desktop | Mobile |
 | --- | --- | --- |
 | index | 1920×1080 (обзор `1:2`; высота — ориентир) | TODO (ширина временно 440) |
+| startup | 1920×1080 (обзор `74:15`) | TODO (provisional stack 396) |
 
 Высота артборда desktop — **1080** (fit в viewport). Контентная ширина: desktop **1083px** (центр), mobile **396px** (поля ~22px) — ориентир.
 
@@ -50,7 +54,8 @@ Figma fileKey: `jElL6muhfPPhZSn3f5mi2C`
 
 ## Вёрстка по компонентам
 Не верстать страницу целиком. Порядок — см. `current_status.md`:
-- Header → Brand/intro → Featured comic → Subscription → Footer
+- index: Header → Brand/intro → Featured comic → Subscription → Footer
+- startup: Header → Brand → Featured → Partners ×3 → Footer
 
 На каждом шаге: `get_design_context` + скриншот node-id → ассеты → Desktop (+ rem-scale).
 

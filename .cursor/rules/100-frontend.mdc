@@ -6,11 +6,11 @@ alwaysApply: false
 
 ## Разметка и стили
 - Семантичный HTML (`header`, `main`, `section`, `button`/`a` по смыслу).
-- Стили в CSS-файлах (`css/`, `css/index.css`). Не инлайн-стили без нужды.
+- Стили в CSS-файлах (`css/`, `css/index.css`, `css/startup.css`). Не инлайн-стили без нужды.
 - Общие токены — в `css/tokens.css` (цвета, шрифты, размеры из Figma).
 - Desktop: макет **1920px** ширины. Mobile: **440px** (временно) через `html[data-layout="mobile"]` (не `@media` для desktop/mobile вариантов).
 - Размеры блоков в CSS — в **rem** (1rem = 1px макета при эталонной ширине артборда).
-- Обёртка `.page.page-index` + `css/layout.css`; Desktop **без** вертикального scroll; mobile — scroll разрешён.
+- Обёртка `.page.page-index` / `.page.page-startup` + `css/layout.css`; Desktop **без** вертикального scroll; mobile — scroll разрешён.
 
 ## Adaptive
 - `js/design-viewport.js`: layout, `--design-w`, `--fit-fs`, resize/orientationchange.
@@ -31,7 +31,7 @@ alwaysApply: false
 - Никакой отправки форм, API-вызовов, авторизации.
 
 ## Header / footer
-- Одна страница; BEM: `.header`, `.footer` и модификаторы.
+- Страницы index + startup; BEM: `.header`, `.footer` и модификаторы.
 - Механика header — `docs/header-behavior.md` (как в Kutukov / Chrome-safe).
 
 ## Эталон

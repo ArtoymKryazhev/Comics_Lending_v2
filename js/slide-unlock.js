@@ -14,7 +14,6 @@
     var dragging = false;
     var pointerId = null;
     var knobPad = 0;
-    var knobRadius = 0;
 
     function remPx() {
       return parseFloat(getComputedStyle(document.documentElement).fontSize) || 1;
@@ -24,17 +23,23 @@
       var rem = remPx();
       knobPad = 6 * rem;
       var knobW = knob.offsetWidth;
-      knobRadius = knobW / 2;
       maxX = Math.max(0, root.clientWidth - knobPad * 2 - knobW);
-      syncMask(currentX);
+      syncMask();
     }
 
-    function syncMask(x) {
-      var cx = knobPad + x + knobRadius;
-      /* чуть больше круга; запас слева, чтобы буквы не выглядывали */
-      var r = knobRadius + 6 * remPx();
+    function syncMask() {
+      var rem = remPx();
+      var rootRect = root.getBoundingClientRect();
+      var knobRect = knob.getBoundingClientRect();
+      /* центр круга в координатах трека (учитывает transform / DPR) */
+      var cx = knobRect.left + knobRect.width / 2 - rootRect.left;
+      var knobR = knobRect.width / 2;
+      /* ластик чуть шире круга; wipe — в rem, иначе на scale/телефоне зона уезжает */
+      var pad = 8 * rem;
+      var wipe = 12 * rem;
       root.style.setProperty("--mask-x", cx + "px");
-      root.style.setProperty("--mask-r", r + "px");
+      root.style.setProperty("--mask-r", knobR + pad + "px");
+      root.style.setProperty("--mask-wipe", wipe + "px");
     }
 
     function setX(x, animate) {
@@ -45,7 +50,15 @@
         knob.style.transition = "none";
       }
       knob.style.transform = "translate3d(" + currentX + "px, 0, 0)";
-      syncMask(currentX);
+      syncMask();
+      if (animate) {
+        var start = performance.now();
+        function tick(now) {
+          syncMask();
+          if (now - start < 400) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
     }
 
     function reset() {
@@ -95,7 +108,13 @@
     knob.addEventListener("pointerup", onPointerUp);
     knob.addEventListener("pointercancel", onPointerUp);
     window.addEventListener("resize", measure);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", measure);
+    }
     measure();
+    requestAnimationFrame(function () {
+      requestAnimationFrame(measure);
+    });
   }
 
   function boot() {

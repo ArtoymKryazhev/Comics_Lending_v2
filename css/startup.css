@@ -1,0 +1,271 @@
+/* Startup page deltas — Frame 74:15 (+ slides 75:117 / 75:130 / 75:141) */
+
+/* Spacer (как у .page-index) */
+html[data-layout="desktop"] .page-startup::before,
+html[data-layout="mobile"] .page-startup::before {
+  content: "";
+  display: block;
+  height: calc(22rem + 52rem);
+}
+
+html[data-layout="mobile"] .page-startup {
+  padding-bottom: 40rem;
+}
+
+/* Header — download stub (icon + «Скачать» + arrow) */
+
+html[data-layout="desktop"] .page-startup .header__bar {
+  padding: 0 42rem 0 22rem;
+}
+
+html[data-layout="desktop"] .page-startup .header__actions {
+  gap: 0;
+}
+
+html[data-layout="desktop"] .page-startup .header__download {
+  display: flex;
+  align-items: center;
+  gap: 12rem;
+  flex-shrink: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+html[data-layout="desktop"] .page-startup .header__download-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 38rem;
+  height: 38rem;
+  overflow: hidden;
+  border-radius: 10rem;
+  box-shadow: 0 0 8rem rgba(0, 0, 0, 0.1);
+}
+
+html[data-layout="desktop"] .page-startup .header__download-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+html[data-layout="desktop"] .page-startup .header__download-label {
+  font-family: var(--font-family-base);
+  font-size: 16rem;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+html[data-layout="desktop"] .page-startup .header__download-arrow {
+  display: block;
+  flex-shrink: 0;
+  width: 8rem;
+  height: 8rem;
+  margin-left: 4rem;
+}
+
+html[data-layout="mobile"] .page-startup .header__bar {
+  padding: 0 18rem 0 12rem;
+}
+
+html[data-layout="mobile"] .page-startup .header__actions {
+  gap: 0;
+}
+
+html[data-layout="mobile"] .page-startup .header__download {
+  display: flex;
+  align-items: center;
+  gap: 10rem;
+  flex-shrink: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+html[data-layout="mobile"] .page-startup .header__download-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 38rem;
+  height: 38rem;
+  overflow: hidden;
+  border-radius: 10rem;
+  box-shadow: 0 0 8rem rgba(0, 0, 0, 0.1);
+}
+
+html[data-layout="mobile"] .page-startup .header__download-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+html[data-layout="mobile"] .page-startup .header__download-label {
+  font-family: var(--font-family-base);
+  font-size: 16rem;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+html[data-layout="mobile"] .page-startup .header__download-arrow {
+  display: block;
+  flex-shrink: 0;
+  width: 8rem;
+  height: 8rem;
+  margin-left: 2rem;
+}
+
+/* Featured — eyebrow «КОМИКС» + сдвиг title/quote */
+
+html[data-layout="desktop"] .page-startup .featured__eyebrow,
+html[data-layout="mobile"] .page-startup .featured__eyebrow {
+  position: absolute;
+  left: 0;
+  top: 2rem;
+  z-index: 3;
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 24rem;
+  font-weight: 600;
+  line-height: normal;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+html[data-layout="desktop"] .page-startup .featured__copy-slot,
+html[data-layout="mobile"] .page-startup .featured__copy-slot {
+  padding-top: 72rem;
+}
+
+html[data-layout="desktop"] .page-startup .featured__title,
+html[data-layout="mobile"] .page-startup .featured__title {
+  max-width: 263rem;
+}
+
+html[data-layout="desktop"] .page-startup .featured__quote,
+html[data-layout="mobile"] .page-startup .featured__quote {
+  max-width: 269rem;
+  margin-bottom: 0;
+}
+
+/* Partners — desktop: 332 + 22 + 332 + 32 + 355 = 1073 ≈ 1083 */
+
+html[data-layout="desktop"] .partners {
+  display: flex;
+  align-items: flex-start;
+  gap: 22rem;
+  width: 1083rem;
+  margin: 31rem auto 0;
+}
+
+html[data-layout="desktop"] .partners__card {
+  position: relative;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 332rem;
+  height: 217rem;
+  overflow: hidden;
+  border: 1rem solid var(--color-brand-card-border);
+  border-radius: 35rem;
+  background: #ffffff;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+}
+
+html[data-layout="desktop"] .partners__card--fond .partners__logo {
+  position: absolute;
+  left: 0;
+  top: 10.44%;
+  width: 100%;
+  height: 79.13%;
+  object-fit: contain;
+}
+
+html[data-layout="desktop"] .partners__card--utp .partners__logo {
+  position: absolute;
+  left: 14.04%;
+  top: 7.21%;
+  width: 72.15%;
+  height: 85.66%;
+  object-fit: contain;
+}
+
+html[data-layout="desktop"] .partners__text {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 355rem;
+  margin: 22rem 0 0 10rem;
+  font-family: var(--font-family-base);
+  font-size: 16rem;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-text);
+}
+
+/* Partners — mobile: стек 396 (Brand → Featured → Partners → Footer) */
+
+html[data-layout="mobile"] .partners {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 22rem;
+  width: 396rem;
+  margin: 22rem auto 0;
+}
+
+html[data-layout="mobile"] .partners__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 396rem;
+  height: 200rem;
+  padding: 24rem 28rem;
+  overflow: hidden;
+  border: 1rem solid var(--color-brand-card-border);
+  border-radius: 35rem;
+  background: #ffffff;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+}
+
+html[data-layout="mobile"] .partners__logo {
+  position: static;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+html[data-layout="mobile"] .partners__text {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 15rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-text);
+}
+
+/* Footer без legal: company слева, RuStore справа */
+
+html[data-layout="desktop"] .page-startup .footer {
+  margin-top: 40rem;
+}
+
+html[data-layout="mobile"] .page-startup .footer {
+  width: 396rem;
+  margin: 22rem auto 0;
+}
+
+html[data-layout="mobile"] .page-startup .footer--no-legal .footer__card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "company rustore";
+  column-gap: 16rem;
+  row-gap: 0;
+  align-items: center;
+}
