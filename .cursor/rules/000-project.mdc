@@ -12,10 +12,10 @@ alwaysApply: true
 
 ## Страницы
 Страницы в `pages/`:
-- `pages/index.html` — лендинг (обзор Desktop [`1:2`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=1-2))
-- `pages/startup.html` — стартап / партнёры (обзор [`74:15`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/WEBSITE-STARTUP-?node-id=74-15); слайды `75:117`, `75:130`, `75:141`)
+- `pages/index.html` — **главная** (стартап / партнёры, обзор [`74:15`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/WEBSITE-STARTUP-?node-id=74-15); слайды `75:117`, `75:130`, `75:141`)
+- `pages/subscribe.html` — вторичная (подписка, обзор Desktop [`1:2`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=1-2))
 
-Навигации между страницами нет. Стили startup — в `css/startup.css` (дельты поверх `index.css`).
+Корень `index.html` — редирект на главную (GitHub Pages). Навигации между страницами нет. Стили startup — в `css/startup.css` (дельты поверх `index.css`).
 
 Figma fileKey: `jElL6muhfPPhZSn3f5mi2C`
 
@@ -24,8 +24,8 @@ Figma fileKey: `jElL6muhfPPhZSn3f5mi2C`
 ## Артборды
 | Страница | Desktop | Mobile |
 | --- | --- | --- |
-| index | 1920×1080 (обзор `1:2`; высота — ориентир) | TODO (ширина временно 440) |
-| startup | 1920×1080 (обзор `74:15`) | TODO (provisional stack 396) |
+| index (startup) | 1920×1080 (обзор `74:15`) | TODO (provisional stack 396) |
+| subscribe | 1920×1080 (обзор `1:2`; высота — ориентир) | TODO (ширина временно 440) |
 
 Высота артборда desktop — **1080** (fit в viewport). Контентная ширина: desktop **1083px** (центр), mobile **396px** (поля ~22px) — ориентир.
 
@@ -54,8 +54,8 @@ Figma fileKey: `jElL6muhfPPhZSn3f5mi2C`
 
 ## Вёрстка по компонентам
 Не верстать страницу целиком. Порядок — см. `current_status.md`:
-- index: Header → Brand/intro → Featured comic → Subscription → Footer
-- startup: Header → Brand → Featured → Partners ×3 → Footer
+- index (главная): Header → Brand → Featured → Partners ×3 → Footer
+- subscribe: Header → Brand/intro → Featured comic → Subscription → Footer
 
 На каждом шаге: `get_design_context` + скриншот node-id → ассеты → Desktop (+ rem-scale).
 

@@ -2,7 +2,7 @@
 
 Визуал (цвета, отступы, размеры бара) — из фрейма Comics. Паттерн — spacer + pointer-events (+ blur при translucent bg).
 
-Реализация: `pages/index.html` + `css/index.css` (Figma `46:15`). Лого / RuStore / бургер — **не кликабельны**.
+Реализация: `pages/subscribe.html` / `pages/index.html` + `css/index.css` (+ `startup.css` на главной). Лого / RuStore / бургер / Скачать — **не кликабельны** или внешние заглушки.
 
 ## Паттерн (desktop)
 

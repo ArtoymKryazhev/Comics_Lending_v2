@@ -44,10 +44,10 @@ HTML + CSS + vanilla JS.
 
 | Файл | Назначение | Desktop | Mobile |
 | --- | --- | --- | --- |
-| [pages/index.html](pages/index.html) | Лендинг (подписка) | [`1:2`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=1-2) (обзор) | provisional (без макета) |
-| [pages/startup.html](pages/startup.html) | Стартап / партнёры | [`74:15`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/WEBSITE-STARTUP-?node-id=74-15) | provisional (без макета) |
+| [pages/index.html](pages/index.html) | **Главная** — стартап / партнёры | [`74:15`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/WEBSITE-STARTUP-?node-id=74-15) | provisional (без макета) |
+| [pages/subscribe.html](pages/subscribe.html) | Вторичная — подписка | [`1:2`](https://www.figma.com/design/jElL6muhfPPhZSn3f5mi2C/Untitled?node-id=1-2) (обзор) | provisional (без макета) |
 
-Навигации между страницами нет (независимые URL).
+Корень [`index.html`](index.html) редиректит на главную (для GitHub Pages). Навигации между страницами нет.
 
 ## Структура
 - `css/` — reset, tokens, layout, `index.css`, `startup.css` (дельты 2-й страницы)

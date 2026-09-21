@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html
+  lang="ru"
+  data-artboard-w="1920"
+  data-artboard-h="1080"
+  data-artboard-w-mobile="440"
+  data-artboard-h-mobile="0"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Крумб</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <div class="page page-index">
+      <header class="header">
+        <div class="header__bar">
+          <span class="header__logo" aria-hidden="true">
+            <img src="../assets/index/icon-logo.png" alt="" width="38" height="38" />
+          </span>
+          <div class="header__actions">
+            <a
+              class="header__rustore"
+              href="https://www.rustore.ru/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="RuStore"
+            >
+              <img
+                src="../assets/index/button-rustore.png"
+                alt=""
+                width="126"
+                height="38"
+              />
+            </a>
+            <span class="header__menu" aria-hidden="true">
+              <img
+                src="../assets/index/icon-burger-menu.svg"
+                alt=""
+                width="21"
+                height="8"
+              />
+            </span>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="hero-row">
+          <section class="brand" aria-label="Крумб">
+            <div class="brand__card">
+              <h1 class="brand__title">Крумб</h1>
+              <p class="brand__subtitle">
+                Онлайн платформа для чтения авторских исторических комиксов
+              </p>
+              <div class="brand__art" aria-hidden="true">
+                <img
+                  src="../assets/index/img-left-div.png"
+                  alt=""
+                  width="417"
+                  height="364"
+                />
+              </div>
+              <div class="brand__slider" data-slider>
+                <div class="brand__slider-label-wrap" data-slider-mask>
+                  <p class="brand__slider-label">7 дней бесплатно</p>
+                </div>
+                <button
+                  class="brand__slider-knob"
+                  type="button"
+                  data-slider-knob
+                  aria-label="Проведите, чтобы продолжить"
+                >
+                  <img
+                    src="../assets/index/icon-arrow-slider.svg"
+                    alt=""
+                    width="66"
+                    height="66"
+                  />
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="featured"
+            aria-label="Комиксы"
+            data-featured-carousel
+          >
+            <div class="featured__card">
+              <div class="featured__stage">
+                <div class="featured__copy">
+                  <div class="featured__copy-slot is-active" data-featured-copy-a>
+                    <h2 class="featured__title" data-featured-title></h2>
+                    <p class="featured__quote" data-featured-quote></p>
+                  </div>
+                  <div class="featured__copy-slot" data-featured-copy-b aria-hidden="true">
+                    <h2 class="featured__title" data-featured-title></h2>
+                    <p class="featured__quote" data-featured-quote></p>
+                  </div>
+                </div>
+                <div class="featured__media">
+                  <div class="featured__media-slot is-active" data-featured-media-a>
+                    <img data-featured-img alt="" width="287" height="499" />
+                  </div>
+                  <div class="featured__media-slot" data-featured-media-b aria-hidden="true">
+                    <img data-featured-img alt="" width="287" height="499" />
+                  </div>
+                </div>
+              </div>
+              <div class="featured__dots" role="tablist" aria-label="Слайды">
+                <button
+                  class="featured__dot is-active"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-label="Слайд 1"
+                  data-featured-dot
+                  data-index="0"
+                >
+                  <span class="featured__dot-fill" aria-hidden="true"></span>
+                </button>
+                <button
+                  class="featured__dot"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Слайд 2"
+                  data-featured-dot
+                  data-index="1"
+                >
+                  <span class="featured__dot-fill" aria-hidden="true"></span>
+                </button>
+                <button
+                  class="featured__dot"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Слайд 3"
+                  data-featured-dot
+                  data-index="2"
+                >
+                  <span class="featured__dot-fill" aria-hidden="true"></span>
+                </button>
+                <button
+                  class="featured__dot"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Слайд 4"
+                  data-featured-dot
+                  data-index="3"
+                >
+                  <span class="featured__dot-fill" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+            <div
+              class="featured__swipe"
+              data-featured-swipe
+              aria-hidden="true"
+            ></div>
+          </section>
+        </div>
+
+        <section class="subscribe" aria-label="Подписка">
+          <div class="subscribe__card">
+            <div class="subscribe__left">
+              <h2 class="subscribe__title">Что входит в подписку?</h2>
+              <ul class="subscribe__features">
+                <li class="subscribe__feature">
+                  <img
+                    class="subscribe__feature-icon"
+                    src="../assets/index/icon-book.svg"
+                    alt=""
+                    width="36"
+                    height="36"
+                  />
+                  <p class="subscribe__feature-text">
+                    Полный доступ ко всем выпускам комиксов и просмотру постеров
+                  </p>
+                </li>
+                <li class="subscribe__feature">
+                  <img
+                    class="subscribe__feature-icon"
+                    src="../assets/index/icon-download.svg"
+                    alt=""
+                    width="36"
+                    height="36"
+                  />
+                  <p class="subscribe__feature-text">
+                    Скачивайте выпуски, получите доступ, когда нет интернет
+                    соединения
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="subscribe__right">
+              <div class="subscribe__price">
+                <p class="subscribe__price-value">₽199/месяц</p>
+                <p class="subscribe__price-note">Можно отменить в любой момент</p>
+              </div>
+              <span class="subscribe__cta" aria-hidden="true">
+                <span class="subscribe__cta-main">Продолжить</span>
+                <span class="subscribe__cta-free">(7 дней бесплатно)</span>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div class="footer__card">
+            <div class="footer__company">
+              <p class="footer__company-name">ООО АКБ, 2026</p>
+              <p class="footer__company-meta">
+                ИНН 2315241885, ОГРН 1252300053686
+              </p>
+            </div>
+            <div class="footer__legal">
+              <button
+                type="button"
+                class="footer__legal-link"
+                data-legal-open="privacy"
+              >
+                <span class="footer__legal-line"
+                  >Политика конфидициальности и</span
+                >
+                <span class="footer__legal-line"
+                  >согласие на обработку персональных данных</span
+                >
+              </button>
+            </div>
+            <a
+              class="footer__rustore"
+              href="https://www.rustore.ru/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="RuStore"
+            >
+              <img
+                src="../assets/index/icon-rustore.png"
+                alt=""
+                width="52"
+                height="52"
+              />
+            </a>
+          </div>
+        </footer>
+      </main>
+    </div>
+    <div class="viewport-unsupported" hidden>
+      Мы пока не поддерживаем этот формат. Откройте страницу на компьютере.
+    </div>
+
+    <div
+      class="legal-modal"
+      data-legal-modal
+      hidden
+      aria-hidden="true"
+    >
+      <div class="legal-modal__backdrop" data-legal-close tabindex="-1"></div>
+      <div
+        class="legal-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="legal-modal-title"
+      >
+        <button
+          type="button"
+          class="legal-modal__close"
+          data-legal-close
+          aria-label="Закрыть"
+        >
+          <span class="legal-modal__close-icon" aria-hidden="true"></span>
+        </button>
+        <h2 class="legal-modal__title" id="legal-modal-title"></h2>
+        <div class="legal-modal__body" data-legal-body></div>
+      </div>
+    </div>
+
+    <template id="legal-template-privacy">
+      <p>
+        Политика конфиденциальности и обработки персональных данных мобильного
+        приложения «Крумб».
+      </p>
+
+      <h3>1. Общие положения</h3>
+      <p>
+        1.1. Настоящая Политика конфиденциальности (далее — Политика) действует в
+        отношении всей информации, которую Оператор может получить о Пользователе
+        во время использования им мобильного приложения «Крумб» (далее —
+        Приложение).
+      </p>
+      <p>
+        1.2. Использование Приложения означает безоговорочное согласие
+        Пользователя с настоящей Политикой и указанными в ней условиями обработки
+        его персональных данных. В случае несогласия с этими условиями
+        Пользователь должен воздержаться от использования Приложения.
+      </p>
+      <p>1.3. Сведения об Операторе:</p>
+      <ul>
+        <li>Наименование: ООО «АЛЬБЕРТ КУТУКОВ БИЗНЕС»</li>
+        <li>
+          Юридический адрес: Краснодарский край, г.&nbsp;Новороссийск,
+          ул.&nbsp;Мира, д.&nbsp;37, кв.&nbsp;82
+        </li>
+        <li>ОГРН: 1252300053686</li>
+        <li>ИНН / КПП: 2315241885 / 231501001</li>
+      </ul>
+
+      <h3>2. Цели сбора и обработки персональных данных</h3>
+      <p>
+        2.1. Оператор собирает и хранит только те персональные данные, которые
+        необходимы для предоставления сервисов Приложения и исполнения соглашений
+        с Пользователем.
+      </p>
+      <p>
+        2.2. Персональные данные Пользователя Оператор обрабатывает в следующих
+        целях:
+      </p>
+      <ul>
+        <li>
+          Создание и управление учетной записью (Профилем) Пользователя.
+        </li>
+        <li>
+          Идентификация и авторизация Пользователя в Приложении, в том числе с
+          использованием сторонних сервисов (Яндекс ID, VK ID).
+        </li>
+        <li>
+          Проведение оплат и обработка транзакций через интегрированные системы
+          интернет-эквайринга.
+        </li>
+        <li>
+          Связь с Пользователем, включая направление уведомлений, запросов и
+          информации, касающихся использования Приложения, а также обработка
+          запросов от Пользователя.
+        </li>
+      </ul>
+
+      <h3>3. Перечень обрабатываемых персональных данных</h3>
+      <p>
+        3.1. В рамках Приложения Оператор обрабатывает следующие данные:
+      </p>
+      <ul>
+        <li>Фамилия, Имя, Отчество (ФИО).</li>
+        <li>Адрес электронной почты (e-mail).</li>
+        <li>Контактный номер телефона.</li>
+        <li>Данные учетной записи (Профиля).</li>
+      </ul>
+      <p>
+        3.2. Данные, получаемые при авторизации через сторонние сервисы (Яндекс,
+        ВКонтакте): в случае, если Пользователь регистрируется или авторизуется в
+        Приложении с использованием учетных записей ООО «ЯНДЕКС» (Яндекс ID) или
+        ООО «ВК» (VK ID), Оператор получает данные из публичного профиля
+        Пользователя в соответствующем сервисе. К таким данным могут относиться:
+        имя, фамилия, адрес электронной почты, номер телефона, идентификатор
+        пользователя (ID), аватар (фотография профиля). Объем передаваемых данных
+        определяется настройками приватности Пользователя в соответствующих
+        сервисах и согласием, предоставляемым Пользователем в момент авторизации.
+      </p>
+      <p>
+        3.3. Данные для оплаты: Приложение осуществляет сбор данных для проведения
+        оплаты через сторонние сервисы эквайринга. Платежные реквизиты (номера
+        банковских карт, CVV-коды и т.д.) не сохраняются на серверах Оператора; их
+        обработка осуществляется исключительно на стороне защищенного платежного
+        шлюза банка-партнера в соответствии со стандартами безопасности PCI DSS.
+      </p>
+
+      <h3>
+        4. Условия обработки персональных данных и их передачи третьим лицам
+      </h3>
+      <p>
+        4.1. Обработка персональных данных осуществляется с использованием средств
+        автоматизации и без их использования.
+      </p>
+      <p>
+        4.2. В отношении персональных данных Пользователя сохраняется их
+        конфиденциальность, кроме случаев добровольного предоставления
+        Пользователем информации о себе для общего доступа неограниченному кругу
+        лиц.
+      </p>
+      <p>
+        4.3. Взаимодействие со сторонними сервисами авторизации: при использовании
+        авторизации через Яндекс ID или VK ID обработка данных также регулируется
+        политиками конфиденциальности соответствующих сервисов (ООО «ЯНДЕКС» и ООО
+        «ВК»). Оператор не передает пароли от учетных записей сторонних сервисов
+        третьим лицам и не имеет к ним доступа.
+      </p>
+      <p>
+        4.4. Оператор вправе передать персональные данные Пользователя третьим
+        лицам в следующих случаях:
+      </p>
+      <ul>
+        <li>
+          Передача необходима для использования Пользователем определенной функции
+          Приложения (например, передача необходимого минимума данных
+          банку-эквайеру для завершения платежа).
+        </li>
+        <li>
+          Передача предусмотрена российским или иным применимым законодательством
+          в рамках установленной процедуры (по запросу правоохранительных органов
+          и т.д.).
+        </li>
+      </ul>
+
+      <h3>5. Меры по защите персональных данных</h3>
+      <p>
+        5.1. Оператор принимает необходимые и достаточные организационные и
+        технические меры для защиты персональной информации Пользователя от
+        неправомерного или случайного доступа, уничтожения, изменения,
+        блокирования, копирования, распространения, а также от иных неправомерных
+        действий с ней третьих лиц.
+      </p>
+
+      <h3>6. Права пользователя</h3>
+      <p>6.1. Пользователь имеет право:</p>
+      <ul>
+        <li>
+          Требовать уточнения своих персональных данных, их блокирования или
+          уничтожения в случае, если данные являются неполными, устаревшими или
+          неточными.
+        </li>
+        <li>
+          Отозвать согласие на обработку персональных данных (включая данные,
+          полученные при авторизации через Яндекс или ВК) путем удаления своего
+          Профиля в настройках Приложения или направления соответствующего
+          письменного запроса Оператору. Отзыв согласия влечет за собой
+          невозможность дальнейшего использования аккаунта.
+        </li>
+      </ul>
+
+      <h3>7. Контактная информация</h3>
+      <p>
+        7.1. Все предложения или вопросы по поводу настоящей Политики Пользователь
+        вправе направлять на корпоративную электронную почту компании:
+        <a href="mailto:inbox@albertkutukov.ru">inbox@albertkutukov.ru</a>.
+      </p>
+      <p>
+        7.2. Письменные обращения также принимаются по юридическому адресу
+        Оператора, указанному в п.&nbsp;1.3 настоящей Политики.
+      </p>
+    </template>
+
+    <script src="../js/design-viewport.js"></script>
+    <script src="../js/slide-unlock.js"></script>
+    <script src="../js/featured-carousel.js"></script>
+    <script src="../js/legal-modal.js"></script>
+  </body>
+</html>
