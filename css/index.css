@@ -763,12 +763,16 @@ html[data-layout="desktop"] .subscribe__cta-free {
   color: var(--color-subscribe-cta-muted);
 }
 
-/* Footer — desktop (Frame 38:17)
-   subscribe ends 692+217=909; footer top 949 → margin 40 */
+/* Footer — desktop: приклеен к низу артборда (.page), 20rem от края */
 
 html[data-layout="desktop"] .footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rem;
+  z-index: 2;
   width: 1083rem;
-  margin: 40rem auto 0;
+  margin: 0 auto;
 }
 
 html[data-layout="desktop"] .footer__card {
@@ -872,10 +876,55 @@ html[data-layout="desktop"] .footer__rustore img {
   object-fit: cover;
 }
 
+/* Пара иконок VK + RuStore (главная) */
+html[data-layout="desktop"] .footer__socials {
+  position: absolute;
+  right: 42rem;
+  top: 22rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12rem;
+}
+
+html[data-layout="desktop"] .footer__socials .footer__rustore,
+html[data-layout="desktop"] .footer__socials .footer__vk {
+  position: static;
+  left: auto;
+  top: auto;
+  display: block;
+  flex-shrink: 0;
+  width: 52rem;
+  height: 52rem;
+  overflow: hidden;
+  border-radius: 30rem;
+  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+html[data-layout="desktop"] .footer__socials .footer__vk img,
+html[data-layout="desktop"] .footer__socials .footer__rustore img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Mobile layout без макета: колонка 396, стек Brand → Featured → Subscribe → Footer */
 
 html[data-layout="mobile"] .page-index {
-  padding-bottom: 40rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 0;
+}
+
+html[data-layout="mobile"] .page-index > main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  width: 100%;
 }
 
 html[data-layout="mobile"] .hero-row {
@@ -1113,10 +1162,10 @@ html[data-layout="mobile"] .subscribe__cta-free {
   color: var(--color-subscribe-cta-muted);
 }
 
-/* Footer — mobile: company + RuStore в ряд, политика в 2 строки ниже */
+/* Footer — mobile: в потоке страницы, прижат к низу .page (20rem от края) */
 html[data-layout="mobile"] .footer {
   width: 396rem;
-  margin: 22rem auto 0;
+  margin: auto auto 20rem;
 }
 
 html[data-layout="mobile"] .footer__card {
@@ -1410,6 +1459,40 @@ html[data-layout="mobile"] .footer__rustore {
 }
 
 html[data-layout="mobile"] .footer__rustore img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+html[data-layout="mobile"] .footer__socials {
+  position: static;
+  grid-area: socials;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12rem;
+}
+
+html[data-layout="mobile"] .footer__socials .footer__rustore,
+html[data-layout="mobile"] .footer__socials .footer__vk {
+  position: static;
+  grid-area: auto;
+  display: block;
+  flex-shrink: 0;
+  width: 52rem;
+  height: 52rem;
+  overflow: hidden;
+  border-radius: 30rem;
+  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
+  cursor: pointer;
+  justify-self: auto;
+}
+
+html[data-layout="mobile"] .footer__socials .footer__vk img,
+html[data-layout="mobile"] .footer__socials .footer__rustore img {
   display: block;
   width: 100%;
   height: 100%;

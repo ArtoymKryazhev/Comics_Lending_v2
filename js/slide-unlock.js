@@ -1,7 +1,7 @@
 /**
  * Slide-to-unlock на brand-карточке.
  * Ручка — ластик по маске: текст на месте, под кругом мягко стирается.
- * По отпусканию возвращается назад — никуда не ведёт.
+ * При полном свайпе: если есть data-slider-href — открывает ссылку.
  */
 (function () {
   function initSlider(root) {
@@ -14,6 +14,7 @@
     var dragging = false;
     var pointerId = null;
     var knobPad = 0;
+    var href = root.getAttribute("data-slider-href") || "";
 
     function remPx() {
       return parseFloat(getComputedStyle(document.documentElement).fontSize) || 1;
@@ -67,6 +68,11 @@
       setX(0, true);
     }
 
+    function openHref() {
+      if (!href) return;
+      window.open(href, "_blank", "noopener,noreferrer");
+    }
+
     function onPointerDown(event) {
       if (event.button != null && event.button !== 0) return;
       measure();
@@ -97,6 +103,7 @@
       if (maxX > 0 && currentX >= maxX * 0.85) {
         setX(maxX, true);
         root.classList.add("is-complete");
+        openHref();
         window.setTimeout(reset, 400);
       } else {
         reset();

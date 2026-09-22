@@ -9,7 +9,17 @@ html[data-layout="mobile"] .page-startup::before {
 }
 
 html[data-layout="mobile"] .page-startup {
-  padding-bottom: 40rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 0;
+}
+
+html[data-layout="mobile"] .page-startup > main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  width: 100%;
 }
 
 /* Header — download stub (icon + «Скачать» + arrow) */
@@ -27,7 +37,10 @@ html[data-layout="desktop"] .page-startup .header__download {
   align-items: center;
   gap: 12rem;
   flex-shrink: 0;
-  pointer-events: none;
+  text-decoration: none;
+  color: inherit;
+  pointer-events: auto;
+  cursor: pointer;
   user-select: none;
 }
 
@@ -78,7 +91,10 @@ html[data-layout="mobile"] .page-startup .header__download {
   align-items: center;
   gap: 10rem;
   flex-shrink: 0;
-  pointer-events: none;
+  text-decoration: none;
+  color: inherit;
+  pointer-events: auto;
+  cursor: pointer;
   user-select: none;
 }
 
@@ -116,7 +132,7 @@ html[data-layout="mobile"] .page-startup .header__download-arrow {
   margin-left: 2rem;
 }
 
-/* Featured — eyebrow «КОМИКС» + сдвиг title/quote */
+/* Featured — eyebrow «КОМИКС»; текст и dots выше (Figma 74:24 / 75:117 / 75:130 / 75:141) */
 
 html[data-layout="desktop"] .page-startup .featured__eyebrow,
 html[data-layout="mobile"] .page-startup .featured__eyebrow {
@@ -135,9 +151,32 @@ html[data-layout="mobile"] .page-startup .featured__eyebrow {
   pointer-events: none;
 }
 
+/* Колонка текста: низ = верх dots (475); gap quote→dots через padding-bottom слота */
+html[data-layout="desktop"] .page-startup .featured__copy,
+html[data-layout="mobile"] .page-startup .featured__copy {
+  top: 36rem;
+  bottom: 80rem; /* 555 - 475 */
+}
+
 html[data-layout="desktop"] .page-startup .featured__copy-slot,
 html[data-layout="mobile"] .page-startup .featured__copy-slot {
-  padding-top: 72rem;
+  padding-top: 48rem;
+  box-sizing: border-box;
+}
+
+/* Макет: gap 102 / 102 / 102 / 32 между низом quote и dots */
+html[data-layout="desktop"] .page-startup .featured__copy-slot[data-slide="0"],
+html[data-layout="mobile"] .page-startup .featured__copy-slot[data-slide="0"],
+html[data-layout="desktop"] .page-startup .featured__copy-slot[data-slide="1"],
+html[data-layout="mobile"] .page-startup .featured__copy-slot[data-slide="1"],
+html[data-layout="desktop"] .page-startup .featured__copy-slot[data-slide="2"],
+html[data-layout="mobile"] .page-startup .featured__copy-slot[data-slide="2"] {
+  padding-bottom: 102rem;
+}
+
+html[data-layout="desktop"] .page-startup .featured__copy-slot[data-slide="3"],
+html[data-layout="mobile"] .page-startup .featured__copy-slot[data-slide="3"] {
+  padding-bottom: 32rem;
 }
 
 html[data-layout="desktop"] .page-startup .featured__title,
@@ -149,6 +188,12 @@ html[data-layout="desktop"] .page-startup .featured__quote,
 html[data-layout="mobile"] .page-startup .featured__quote {
   max-width: 269rem;
   margin-bottom: 0;
+}
+
+/* Статус-бар: Figma top 475 (было 511) */
+html[data-layout="desktop"] .page-startup .featured__dots,
+html[data-layout="mobile"] .page-startup .featured__dots {
+  top: 475rem;
 }
 
 /* Partners — desktop: 332 + 22 + 332 + 32 + 355 = 1073 ≈ 1083 */
@@ -250,21 +295,17 @@ html[data-layout="mobile"] .partners__text {
   color: var(--color-text);
 }
 
-/* Footer без legal: company слева, RuStore справа */
-
-html[data-layout="desktop"] .page-startup .footer {
-  margin-top: 40rem;
-}
+/* Footer без legal: company слева, RuStore справа; к низу страницы */
 
 html[data-layout="mobile"] .page-startup .footer {
   width: 396rem;
-  margin: 22rem auto 0;
+  margin: auto auto 20rem;
 }
 
 html[data-layout="mobile"] .page-startup .footer--no-legal .footer__card {
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-areas: "company rustore";
+  grid-template-areas: "company socials";
   column-gap: 16rem;
   row-gap: 0;
   align-items: center;

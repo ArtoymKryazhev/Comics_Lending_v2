@@ -40,7 +40,7 @@
   var AUTO_MS = 5000;
   var ANIM_MS = 450;
 
-  function fillSlot(slot, slide) {
+  function fillSlot(slot, slide, slideIndex) {
     var title = slot.querySelector("[data-featured-title]");
     var quote = slot.querySelector("[data-featured-quote]");
     var img = slot.querySelector("[data-featured-img]");
@@ -49,6 +49,9 @@
     if (img) {
       img.src = slide.src;
       img.alt = slide.alt || "";
+    }
+    if (typeof slideIndex === "number") {
+      slot.setAttribute("data-slide", String(slideIndex));
     }
   }
 
@@ -78,10 +81,10 @@
       typeof Element !== "undefined" &&
       typeof Element.prototype.animate === "function";
 
-    fillSlot(copyA, SLIDES[0]);
-    fillSlot(mediaA, SLIDES[0]);
-    fillSlot(copyB, SLIDES[0]);
-    fillSlot(mediaB, SLIDES[0]);
+    fillSlot(copyA, SLIDES[0], 0);
+    fillSlot(mediaA, SLIDES[0], 0);
+    fillSlot(copyB, SLIDES[0], 0);
+    fillSlot(mediaB, SLIDES[0], 0);
 
     function getDotFill(dot) {
       return dot.querySelector(".featured__dot-fill");
@@ -211,8 +214,8 @@
       var outMedia = useA ? mediaA : mediaB;
       var inMedia = useA ? mediaB : mediaA;
 
-      fillSlot(inCopy, slide);
-      fillSlot(inMedia, slide);
+      fillSlot(inCopy, slide, nextIndex);
+      fillSlot(inMedia, slide, nextIndex);
 
       animating = true;
       inCopy.setAttribute("aria-hidden", "false");

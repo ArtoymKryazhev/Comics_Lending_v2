@@ -30,7 +30,13 @@
             <img src="../assets/index/icon-logo.png" alt="" width="38" height="38" />
           </span>
           <div class="header__actions">
-            <span class="header__download" aria-hidden="true">
+            <a
+              class="header__download"
+              href="https://www.rustore.ru/catalog/app/com.comics.rneapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Скачать в RuStore"
+            >
               <span class="header__download-icon">
                 <img
                   src="../assets/index/icon-logo-comics.svg"
@@ -47,7 +53,7 @@
                 width="8"
                 height="8"
               />
-            </span>
+            </a>
           </div>
         </div>
       </header>
@@ -67,7 +73,11 @@
                   height="364"
                 />
               </div>
-              <div class="brand__slider" data-slider>
+              <div
+                class="brand__slider"
+                data-slider
+                data-slider-href="https://www.rustore.ru/catalog/app/com.comics.rneapp"
+              >
                 <div class="brand__slider-label-wrap" data-slider-mask>
                   <p class="brand__slider-label">7 дней бесплатно</p>
                 </div>
@@ -205,20 +215,36 @@
                 ИНН 2315241885, ОГРН 1252300053686
               </p>
             </div>
-            <a
-              class="footer__rustore"
-              href="https://www.rustore.ru/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="RuStore"
-            >
-              <img
-                src="../assets/index/icon-rustore.png"
-                alt=""
-                width="52"
-                height="52"
-              />
-            </a>
+            <div class="footer__socials">
+              <a
+                class="footer__vk"
+                href="https://vk.ru/club233293559"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="ВКонтакте"
+              >
+                <img
+                  src="../assets/index/icon-vk.png"
+                  alt=""
+                  width="52"
+                  height="52"
+                />
+              </a>
+              <a
+                class="footer__rustore"
+                href="https://www.rustore.ru/catalog/app/com.comics.rneapp"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="RuStore"
+              >
+                <img
+                  src="../assets/index/icon-rustore.png"
+                  alt=""
+                  width="52"
+                  height="52"
+                />
+              </a>
+            </div>
           </div>
         </footer>
       </main>
