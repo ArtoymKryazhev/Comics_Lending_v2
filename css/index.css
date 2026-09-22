@@ -1162,10 +1162,12 @@ html[data-layout="mobile"] .subscribe__cta-free {
   color: var(--color-subscribe-cta-muted);
 }
 
-/* Footer — mobile: в потоке страницы, прижат к низу .page (20rem от края) */
+/* Footer — mobile: к низу .page + мин. отступ 22rem от блока выше (как gap стека) */
 html[data-layout="mobile"] .footer {
   width: 396rem;
   margin: auto auto 20rem;
+  padding-top: 22rem;
+  box-sizing: content-box;
 }
 
 html[data-layout="mobile"] .footer__card {

@@ -300,6 +300,8 @@ html[data-layout="mobile"] .partners__text {
 html[data-layout="mobile"] .page-startup .footer {
   width: 396rem;
   margin: auto auto 20rem;
+  padding-top: 22rem;
+  box-sizing: content-box;
 }
 
 html[data-layout="mobile"] .page-startup .footer--no-legal .footer__card {
